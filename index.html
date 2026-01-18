@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+      
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
+          <style>
+            body {
+              font-family: 'Hind';
+            }
+            h1, h2, h3, h4, h5, h6 {
+              font-family: 'Montserrat';
+            }
+
+            :root {
+              --background: #1A202C;
+              --foreground: #E2E8F0;
+              --card-background: #2D3748;
+              --card-foreground: #E2E8F0;
+              --primary-background: #60A5FA;
+              --primary-foreground: #FFFFFF;
+              --secondary-background: #4A5568;
+              --secondary-foreground: #E2E8F0;
+              --muted-background: #2D3748;
+              --muted-foreground: #A0AEC0;
+              --accent-background: #60A5FA;
+              --accent-foreground: #E2E8F0;
+              --destructive: #EF4444;
+              --border: #4A5568;
+              --input: #2D3748;
+              --ring: #60A5FA;
+            }
+          </style>
+        
+      
+          <script>
+            // PREVIEW_ONLY: This script is only for preview isolation and will be removed before publishing
+            // Listen for content changes in the contentEditable body
+            document.addEventListener('DOMContentLoaded', function() {
+              const body = document.body;
+              let timeout;
+              
+              // Intercept all link clicks to prevent navigation within iframe
+              document.addEventListener('click', function(e) {
+                const link = e.target.closest('a');
+                if (link) {
+                  // Get the raw href attribute value (not the resolved URL)
+                  const href = (link.getAttribute('href') || '').trim();
+                  
+                  // Check if it's a hash-only link (#, empty, or starts with #)
+                  // Hash links are: empty, "#", or anything starting with "#" that doesn't have a protocol
+                  const isHashLink = !href || 
+                                    href === '#' || 
+                                    (href.startsWith('#') && !href.includes('://'));
+                  
+                  // Always prevent default behavior first
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                  e.stopPropagation();
+                  
+                  // For hash-only links (including empty or just #), do absolutely nothing
+                  if (isHashLink) {
+                    // Only check for valid anchor if it's not just "#" or empty
+                    if (href && href !== '#') {
+                      const hash = href.substring(1).trim();
+                      if (hash) {
+                        try {
+                          const targetElement = document.getElementById(hash) || 
+                                              document.querySelector('[name="' + hash + '"]');
+                          // Only allow scrolling if the target element exists
+                          if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            return false;
+                          }
+                        } catch (err) {
+                          // Ignore errors, just prevent navigation
+                        }
+                      }
+                    }
+                    // For invalid, empty, or just "#" hash links, do nothing at all
+                    return false;
+                  }
+                  
+                  // For external links (not hash links), open in new tab
+                  const hrefValue = link.href || '';
+                  if (hrefValue) {
+                    try {
+                      window.open(hrefValue, '_blank', 'noopener,noreferrer');
+                    } catch (err) {
+                      // If popup blocked, just prevent navigation
+                    }
+                  }
+                  
+                  return false;
+                }
+              }, true); // Use capture phase to catch all clicks
+              
+              // Prevent hashchange events that might cause navigation
+              window.addEventListener('hashchange', function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                // Prevent URL change
+                if (window.history && window.history.replaceState) {
+                  const url = window.location.href.split('#')[0];
+                  window.history.replaceState(null, '', url);
+                }
+                return false;
+              }, true);
+              
+              // Prevent form submissions that would navigate the iframe
+              document.addEventListener('submit', function(e) {
+                const form = e.target;
+                if (form && form.tagName === 'FORM') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+                }
+              }, true);
+              
+              body.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                  const content = body.innerHTML;
+                  // Security: Only send postMessage to same origin
+                  // Using window.location.origin ensures we don't leak content to external frames
+                  const targetOrigin = window.location.origin;
+                  window.parent.postMessage({
+                    type: 'contentChange',
+                    content: content
+                  }, targetOrigin);
+                }, 300); // Debounce for 300ms
+              });
+              
+              // Also listen for paste events
+              body.addEventListener('paste', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                  const content = body.innerHTML;
+                  // Security: Only send postMessage to same origin
+                  const targetOrigin = window.location.origin;
+                  window.parent.postMessage({
+                    type: 'contentChange',
+                    content: content
+                  }, targetOrigin);
+                }, 100);
+              });
+            });
+          </script>
+        
+      <body>
+        <section id="4M3nYCJoAtQiy82S"><div id="navbar" class="bg-[var(--background)]">
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="#home" class="-m-1.5 p-1.5">
+          <span class="sr-only">Computer Science Graduate Portfolio</span>
+          <img class="h-8 w-auto" src="https://cdn.sitespark.ai/generic-logos/generic_logo_2.svg" alt="Computer Science Graduate Portfolio Logo">
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--foreground)]" onclick="document.getElementById('mobile-menu-navbar').classList.remove('hidden')">
+          <span class="sr-only">Open main menu</span>
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="#home" class="text-sm/6 font-semibold text-[var(--foreground)]">Home</a>
+        <a href="#about-me" class="text-sm/6 font-semibold text-[var(--foreground)]">About Me</a>
+        <a href="#resume" class="text-sm/6 font-semibold text-[var(--foreground)]">Resume</a>
+        <a href="#projects" class="text-sm/6 font-semibold text-[var(--foreground)]">Projects</a>
+        <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)]">Contact</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <!-- No login link for a portfolio -->
+      </div>
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-menu-navbar">
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-50" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')"></div>
+      <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--card-background)] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-[var(--border)]/10">
+        <div class="flex items-center justify-between">
+          <a href="#home" class="-m-1.5 p-1.5">
+            <span class="sr-only">Computer Science Graduate Portfolio</span>
+            <img class="h-8 w-auto" src="https://cdn.sitespark.ai/generic-logos/generic_logo_2.svg" alt="Computer Science Graduate Portfolio Logo">
+          </a>
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-[var(--foreground)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">
+            <span class="sr-only">Close menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-[var(--border)]/10">
+            <div class="space-y-2 py-6">
+              <a href="#home" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Home</a>
+              <a href="#about-me" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">About Me</a>
+              <a href="#resume" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Resume</a>
+              <a href="#projects" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Projects</a>
+              <a href="#contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Contact</a>
+            </div>
+            <div class="py-6">
+              <!-- No login link for a portfolio -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div></section><section id="5oTACj4u2xbDAgn2"><div id="footer" class="bg-[var(--background)]">
+  <footer class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+      <div class="pb-6">
+        <a href="#home" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Home</a>
+      </div>
+      <div class="pb-6">
+        <a href="#about-me" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">About Me</a>
+      </div>
+      <div class="pb-6">
+        <a href="#resume" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Resume</a>
+      </div>
+      <div class="pb-6">
+        <a href="#projects" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Projects</a>
+      </div>
+      <div class="pb-6">
+        <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Contact</a>
+      </div>
+    </nav>
+    <div class="mt-10 flex justify-center space-x-10">
+      <!-- Social media icons can be added here if needed -->
+    </div>
+    <p class="mt-10 text-center text-xs/5 leading-5 text-[var(--muted-foreground)]">&copy; 2024 Computer Science Graduate Portfolio. All rights reserved.</p>
+  </footer>
+</div></section><section id="yetlA8DY072Slgp5"><div id="about-me" class="relative bg-[var(--background)]">
+  <div class="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+    <div class="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+      <div class="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+        <img class="absolute inset-0 size-full bg-[var(--muted-background)] object-cover" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/38149665.jpg" alt="Double exposure of abstract programming language hologram with world map and digital tablet on background top view research and development concept">
+      </div>
+    </div>
+    <div class="px-6 lg:contents">
+      <div class="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+        <p class="text-base/7 font-semibold text-[var(--accent-background)]">My Journey in Tech</p>
+        <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">About Me: A Passion for Innovation</h1>
+        <p class="mt-6 text-xl/8 text-[var(--muted-foreground)]">As a dedicated Computer Science graduate, I am driven by a profound curiosity for technology and its potential to solve real-world problems. My academic journey has equipped me with a robust foundation in software development, algorithm design, and system architecture.</p>
+        <div class="mt-10 max-w-xl text-base/7 text-[var(--muted-foreground)] lg:max-w-none">
+          <p>I thrive on challenges and am constantly seeking opportunities to learn and grow. My expertise spans across full-stack development, crafting seamless user experiences and robust backend systems. I also delve into the fascinating realms of machine learning, developing intelligent solutions, and data analysis, extracting meaningful insights from complex datasets. I believe in writing clean, efficient, and scalable code that stands the test of time.</p>
+          <ul role="list" class="mt-8 space-y-8 text-[var(--muted-foreground)]">
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v13A1.5 1.5 0 0 0 3.5 18h13a1.5 1.5 0 0 0 1.5-1.5V3.5A1.5 1.5 0 0 0 16.5 2h-13ZM10 6a.75.75 0 0 1 .75.75v3.586l1.22-1.22a.75.75 0 1 1 1.06 1.06l-2.5 2.5a.75.75 0 0 1-1.06 0l-2.5-2.5a.75.75 0 0 1 1.06-1.06l1.22 1.22V6.75A.75.75 0 0 1 10 6Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Full-Stack Development.</strong> Building comprehensive web applications from intuitive front-end interfaces to powerful back-end services and databases.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M2.5 3A1.5 1.5 0 0 0 1 4.5v11A1.5 1.5 0 0 0 2.5 17h15A1.5 1.5 0 0 0 19 15.5v-11A1.5 1.5 0 0 0 17.5 3h-15ZM12 5.5a.5.5 0 0 0-1 0v1.5H9.5a.5.5 0 0 0 0 1H11v1.5a.5.5 0 0 0 1 0V8H13.5a.5.5 0 0 0 0-1H12V5.5ZM4 7a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7Zm0 4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1Zm8-1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Machine Learning & Data Analysis.</strong> Developing intelligent algorithms and extracting actionable insights from complex datasets to drive informed decisions.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M11.75 4.5a.75.75 0 0 0-1.5 0V6.25H8.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0V7.75h1.5a.75.75 0 0 0 0-1.5h-1.5V4.5Z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M4.75 2A2.75 2.75 0 0 0 2 4.75v10.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25V4.75A2.75 2.75 0 0 0 15.25 2H4.75ZM3.5 4.75c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v10.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25V4.75Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Problem Solving & Collaboration.</strong> A strong advocate for teamwork and agile methodologies, delivering innovative solutions through effective communication.</span>
+            </li>
+          </ul>
+          <p class="mt-8">My goal is to leverage my skills and passion to contribute to impactful projects that push the boundaries of technology. I am eager to collaborate with forward-thinking teams and continue my growth as a versatile and innovative software engineer. Let's build the future, one line of code at a time.</p>
+          <h2 class="mt-16 text-2xl font-bold tracking-tight text-[var(--foreground)]">What I Bring to the Table</h2>
+          <p class="mt-6">I offer a blend of theoretical knowledge and practical experience, honed through various academic projects and personal initiatives. My approach is always user-centric, ensuring that the technology serves its purpose effectively and intuitively. I am proficient in multiple programming languages and frameworks, adaptable to new technologies, and committed to continuous learning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section><section id="tLuKAy1EOk0Fa4lN"><div id="resume" class="relative isolate overflow-hidden bg-[var(--background)] px-6 py-24 sm:py-32 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-6xl">My Resume</h2>
+    <p class="mt-6 text-lg/8 text-[var(--muted-foreground)]">Explore my professional journey, skills, and accomplishments as a Computer Science Graduate. Download my full resume to learn more about my experience in software development, machine learning, and data analysis.</p>
+    <div class="mt-10 flex items-center justify-center gap-x-6">
+      <a href="#" class="rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-background)]">Download Resume (PDF)</a>
+      <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)]">Contact Me <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="mx-auto mt-16 max-w-4xl">
+    <img class="w-full rounded-xl shadow-xl ring-1 ring-[var(--border)]" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/210587548.jpg" alt="Modern resume template preview in blue style">
+  </div>
+</div></section><section id="JRgxaHDX6cwPsQiv"><div id="projects" class="bg-[var(--background)] py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-balance text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">My Recent Projects</h2>
+      <p class="mt-2 text-lg/8 text-[var(--muted-foreground)]">Showcasing my work in full-stack development, machine learning, and data analysis.</p>
+    </div>
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/412245171.jpg" alt="Technical Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2023-05-01" class="text-[var(--muted-foreground)]">May 2023</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Full-Stack Development</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                E-commerce Platform with AI Recommendations
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Developed a full-stack e-commerce platform featuring secure payment gateways, user authentication, and an AI-powered product recommendation engine using collaborative filtering.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">React, Node.js, MongoDB, Python, TensorFlow</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/411739421.jpg" alt="Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2024-01-01" class="text-[var(--muted-foreground)]">Jan 2024</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Machine Learning</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Predictive Analytics for Customer Churn
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Implemented a machine learning model to predict customer churn for a telecom company, achieving 92% accuracy. Utilized Python with Scikit-learn, Pandas, and Matplotlib for data preprocessing and model evaluation.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">Python, Scikit-learn, Pandas, Matplotlib</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/412245171.jpg" alt="Technical Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2023-10-01" class="text-[var(--muted-foreground)]">Oct 2023</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Data Analysis</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Real-time Data Visualization Dashboard
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Designed and developed an interactive dashboard for real-time sales data visualization. Integrated with a live database and provided customizable charts and filters for business intelligence.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">Tableau, SQL, Python, Power BI</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div></section><section id="2TEIyYMMkDuaTn8C"><div id="contact" class="relative bg-[var(--background)]">
+  <div class="lg:absolute lg:inset-0 lg:left-1/2">
+    <img class="h-64 w-full bg-[var(--muted-background)] object-cover sm:h-80 lg:absolute lg:h-full" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/416762366.jpg" alt="Professional working on a computer, representing communication and collaboration">
+  </div>
+  <div class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32">
+    <div class="px-6 lg:px-8">
+      <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+        <h2 class="text-pretty text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">Let's Connect</h2>
+        <p class="mt-2 text-lg/8 text-[var(--muted-foreground)]">I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out using the form below!</p>
+        <form action="#" method="POST" class="mt-16">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+              <label for="first-name" class="block text-sm/6 font-semibold text-[var(--foreground)]">First name</label>
+              <div class="mt-2.5">
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div>
+              <label for="last-name" class="block text-sm/6 font-semibold text-[var(--foreground)]">Last name</label>
+              <div class="mt-2.5">
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="email" class="block text-sm/6 font-semibold text-[var(--foreground)]">Email</label>
+              <div class="mt-2.5">
+                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="company" class="block text-sm/6 font-semibold text-[var(--foreground)]">Company / Organization</label>
+              <div class="mt-2.5">
+                <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="flex justify-between text-sm/6">
+                <label for="phone" class="block font-semibold text-[var(--foreground)]">Phone</label>
+                <p id="phone-description" class="text-[var(--muted-foreground)]">Optional</p>
+              </div>
+              <div class="mt-2.5">
+                <input type="tel" name="phone" id="phone" autocomplete="tel" aria-describedby="phone-description" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="flex justify-between text-sm/6">
+                <label for="message" class="block text-sm/6 font-semibold text-[var(--foreground)]">Your Message</label>
+                <p id="message-description" class="text-[var(--muted-foreground)]">Max 500 characters</p>
+              </div>
+              <div class="mt-2.5">
+                <textarea id="message" name="message" rows="4" aria-describedby="message-description" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]"></textarea>
+              </div>
+            </div>
+            <fieldset class="sm:col-span-2">
+              <legend class="block text-sm/6 font-semibold text-[var(--foreground)]">Type of Inquiry</legend>
+              <div class="mt-4 space-y-4 text-sm/6 text-[var(--muted-foreground)]">
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-job" name="inquiry" value="job_opportunity" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-job">Job Opportunity</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-collaboration" name="inquiry" value="collaboration" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-collaboration">Collaboration</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-project" name="inquiry" value="project_inquiry" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-project">Project Inquiry</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-general" name="inquiry" value="general_question" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-general">General Question</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="mt-10 flex justify-end border-t border-[var(--border)] pt-8">
+            <button type="submit" class="rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-center text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--primary-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-background)]">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div></section>
+      </body>
+</html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+      
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
+          <style>
+            body {
+              font-family: 'Hind';
+            }
+            h1, h2, h3, h4, h5, h6 {
+              font-family: 'Montserrat';
+            }
+
+            :root {
+              --background: #1A202C;
+              --foreground: #E2E8F0;
+              --card-background: #2D3748;
+              --card-foreground: #E2E8F0;
+              --primary-background: #60A5FA;
+              --primary-foreground: #FFFFFF;
+              --secondary-background: #4A5568;
+              --secondary-foreground: #E2E8F0;
+              --muted-background: #2D3748;
+              --muted-foreground: #A0AEC0;
+              --accent-background: #60A5FA;
+              --accent-foreground: #E2E8F0;
+              --destructive: #EF4444;
+              --border: #4A5568;
+              --input: #2D3748;
+              --ring: #60A5FA;
+            }
+          </style>
+        
+      
+          <script>
+            // PREVIEW_ONLY: This script is only for preview isolation and will be removed before publishing
+            // Listen for content changes in the contentEditable body
+            document.addEventListener('DOMContentLoaded', function() {
+              const body = document.body;
+              let timeout;
+              
+              // Intercept all link clicks to prevent navigation within iframe
+              document.addEventListener('click', function(e) {
+                const link = e.target.closest('a');
+                if (link) {
+                  // Get the raw href attribute value (not the resolved URL)
+                  const href = (link.getAttribute('href') || '').trim();
+                  
+                  // Check if it's a hash-only link (#, empty, or starts with #)
+                  // Hash links are: empty, "#", or anything starting with "#" that doesn't have a protocol
+                  const isHashLink = !href || 
+                                    href === '#' || 
+                                    (href.startsWith('#') && !href.includes('://'));
+                  
+                  // Always prevent default behavior first
+                  e.preventDefault();
+                  e.stopImmediatePropagation();
+                  e.stopPropagation();
+                  
+                  // For hash-only links (including empty or just #), do absolutely nothing
+                  if (isHashLink) {
+                    // Only check for valid anchor if it's not just "#" or empty
+                    if (href && href !== '#') {
+                      const hash = href.substring(1).trim();
+                      if (hash) {
+                        try {
+                          const targetElement = document.getElementById(hash) || 
+                                              document.querySelector('[name="' + hash + '"]');
+                          // Only allow scrolling if the target element exists
+                          if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            return false;
+                          }
+                        } catch (err) {
+                          // Ignore errors, just prevent navigation
+                        }
+                      }
+                    }
+                    // For invalid, empty, or just "#" hash links, do nothing at all
+                    return false;
+                  }
+                  
+                  // For external links (not hash links), open in new tab
+                  const hrefValue = link.href || '';
+                  if (hrefValue) {
+                    try {
+                      window.open(hrefValue, '_blank', 'noopener,noreferrer');
+                    } catch (err) {
+                      // If popup blocked, just prevent navigation
+                    }
+                  }
+                  
+                  return false;
+                }
+              }, true); // Use capture phase to catch all clicks
+              
+              // Prevent hashchange events that might cause navigation
+              window.addEventListener('hashchange', function(e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                // Prevent URL change
+                if (window.history && window.history.replaceState) {
+                  const url = window.location.href.split('#')[0];
+                  window.history.replaceState(null, '', url);
+                }
+                return false;
+              }, true);
+              
+              // Prevent form submissions that would navigate the iframe
+              document.addEventListener('submit', function(e) {
+                const form = e.target;
+                if (form && form.tagName === 'FORM') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  return false;
+                }
+              }, true);
+              
+              body.addEventListener('input', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                  const content = body.innerHTML;
+                  // Security: Only send postMessage to same origin
+                  // Using window.location.origin ensures we don't leak content to external frames
+                  const targetOrigin = window.location.origin;
+                  window.parent.postMessage({
+                    type: 'contentChange',
+                    content: content
+                  }, targetOrigin);
+                }, 300); // Debounce for 300ms
+              });
+              
+              // Also listen for paste events
+              body.addEventListener('paste', function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(function() {
+                  const content = body.innerHTML;
+                  // Security: Only send postMessage to same origin
+                  const targetOrigin = window.location.origin;
+                  window.parent.postMessage({
+                    type: 'contentChange',
+                    content: content
+                  }, targetOrigin);
+                }, 100);
+              });
+            });
+          </script>
+        
+      <body>
+        <section id="4M3nYCJoAtQiy82S"><div id="navbar" class="bg-[var(--background)]">
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="#home" class="-m-1.5 p-1.5">
+          <span class="sr-only">Computer Science Graduate Portfolio</span>
+          <img class="h-8 w-auto" src="https://cdn.sitespark.ai/generic-logos/generic_logo_2.svg" alt="Computer Science Graduate Portfolio Logo">
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--foreground)]" onclick="document.getElementById('mobile-menu-navbar').classList.remove('hidden')">
+          <span class="sr-only">Open main menu</span>
+          <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:gap-x-12">
+        <a href="#home" class="text-sm/6 font-semibold text-[var(--foreground)]">Home</a>
+        <a href="#about-me" class="text-sm/6 font-semibold text-[var(--foreground)]">About Me</a>
+        <a href="#resume" class="text-sm/6 font-semibold text-[var(--foreground)]">Resume</a>
+        <a href="#projects" class="text-sm/6 font-semibold text-[var(--foreground)]">Projects</a>
+        <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)]">Contact</a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <!-- No login link for a portfolio -->
+      </div>
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-menu-navbar">
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-50" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')"></div>
+      <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--card-background)] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-[var(--border)]/10">
+        <div class="flex items-center justify-between">
+          <a href="#home" class="-m-1.5 p-1.5">
+            <span class="sr-only">Computer Science Graduate Portfolio</span>
+            <img class="h-8 w-auto" src="https://cdn.sitespark.ai/generic-logos/generic_logo_2.svg" alt="Computer Science Graduate Portfolio Logo">
+          </a>
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-[var(--foreground)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">
+            <span class="sr-only">Close menu</span>
+            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-[var(--border)]/10">
+            <div class="space-y-2 py-6">
+              <a href="#home" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Home</a>
+              <a href="#about-me" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">About Me</a>
+              <a href="#resume" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Resume</a>
+              <a href="#projects" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Projects</a>
+              <a href="#contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--foreground)] hover:bg-[var(--muted-background)]" onclick="document.getElementById('mobile-menu-navbar').classList.add('hidden')">Contact</a>
+            </div>
+            <div class="py-6">
+              <!-- No login link for a portfolio -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+</div></section><section id="5oTACj4u2xbDAgn2"><div id="footer" class="bg-[var(--background)]">
+  <footer class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+    <nav class="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
+      <div class="pb-6">
+        <a href="#home" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Home</a>
+      </div>
+      <div class="pb-6">
+        <a href="#about-me" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">About Me</a>
+      </div>
+      <div class="pb-6">
+        <a href="#resume" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Resume</a>
+      </div>
+      <div class="pb-6">
+        <a href="#projects" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Projects</a>
+      </div>
+      <div class="pb-6">
+        <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)] hover:text-[var(--accent-background)]">Contact</a>
+      </div>
+    </nav>
+    <div class="mt-10 flex justify-center space-x-10">
+      <!-- Social media icons can be added here if needed -->
+    </div>
+    <p class="mt-10 text-center text-xs/5 leading-5 text-[var(--muted-foreground)]">&copy; 2024 Computer Science Graduate Portfolio. All rights reserved.</p>
+  </footer>
+</div></section><section id="yetlA8DY072Slgp5"><div id="about-me" class="relative bg-[var(--background)]">
+  <div class="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+    <div class="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+      <div class="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+        <img class="absolute inset-0 size-full bg-[var(--muted-background)] object-cover" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/38149665.jpg" alt="Double exposure of abstract programming language hologram with world map and digital tablet on background top view research and development concept">
+      </div>
+    </div>
+    <div class="px-6 lg:contents">
+      <div class="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+        <p class="text-base/7 font-semibold text-[var(--accent-background)]">My Journey in Tech</p>
+        <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">About Me: A Passion for Innovation</h1>
+        <p class="mt-6 text-xl/8 text-[var(--muted-foreground)]">As a dedicated Computer Science graduate, I am driven by a profound curiosity for technology and its potential to solve real-world problems. My academic journey has equipped me with a robust foundation in software development, algorithm design, and system architecture.</p>
+        <div class="mt-10 max-w-xl text-base/7 text-[var(--muted-foreground)] lg:max-w-none">
+          <p>I thrive on challenges and am constantly seeking opportunities to learn and grow. My expertise spans across full-stack development, crafting seamless user experiences and robust backend systems. I also delve into the fascinating realms of machine learning, developing intelligent solutions, and data analysis, extracting meaningful insights from complex datasets. I believe in writing clean, efficient, and scalable code that stands the test of time.</p>
+          <ul role="list" class="mt-8 space-y-8 text-[var(--muted-foreground)]">
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M3.5 2A1.5 1.5 0 0 0 2 3.5v13A1.5 1.5 0 0 0 3.5 18h13a1.5 1.5 0 0 0 1.5-1.5V3.5A1.5 1.5 0 0 0 16.5 2h-13ZM10 6a.75.75 0 0 1 .75.75v3.586l1.22-1.22a.75.75 0 1 1 1.06 1.06l-2.5 2.5a.75.75 0 0 1-1.06 0l-2.5-2.5a.75.75 0 0 1 1.06-1.06l1.22 1.22V6.75A.75.75 0 0 1 10 6Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Full-Stack Development.</strong> Building comprehensive web applications from intuitive front-end interfaces to powerful back-end services and databases.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M2.5 3A1.5 1.5 0 0 0 1 4.5v11A1.5 1.5 0 0 0 2.5 17h15A1.5 1.5 0 0 0 19 15.5v-11A1.5 1.5 0 0 0 17.5 3h-15ZM12 5.5a.5.5 0 0 0-1 0v1.5H9.5a.5.5 0 0 0 0 1H11v1.5a.5.5 0 0 0 1 0V8H13.5a.5.5 0 0 0 0-1H12V5.5ZM4 7a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7Zm0 4a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1Zm8-1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Machine Learning & Data Analysis.</strong> Developing intelligent algorithms and extracting actionable insights from complex datasets to drive informed decisions.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--accent-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M11.75 4.5a.75.75 0 0 0-1.5 0V6.25H8.75a.75.75 0 0 0 0 1.5h1.5v1.5a.75.75 0 0 0 1.5 0V7.75h1.5a.75.75 0 0 0 0-1.5h-1.5V4.5Z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M4.75 2A2.75 2.75 0 0 0 2 4.75v10.5A2.75 2.75 0 0 0 4.75 18h10.5A2.75 2.75 0 0 0 18 15.25V4.75A2.75 2.75 0 0 0 15.25 2H4.75ZM3.5 4.75c0-.69.56-1.25 1.25-1.25h10.5c.69 0 1.25.56 1.25 1.25v10.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25V4.75Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Problem Solving & Collaboration.</strong> A strong advocate for teamwork and agile methodologies, delivering innovative solutions through effective communication.</span>
+            </li>
+          </ul>
+          <p class="mt-8">My goal is to leverage my skills and passion to contribute to impactful projects that push the boundaries of technology. I am eager to collaborate with forward-thinking teams and continue my growth as a versatile and innovative software engineer. Let's build the future, one line of code at a time.</p>
+          <h2 class="mt-16 text-2xl font-bold tracking-tight text-[var(--foreground)]">What I Bring to the Table</h2>
+          <p class="mt-6">I offer a blend of theoretical knowledge and practical experience, honed through various academic projects and personal initiatives. My approach is always user-centric, ensuring that the technology serves its purpose effectively and intuitively. I am proficient in multiple programming languages and frameworks, adaptable to new technologies, and committed to continuous learning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section><section id="tLuKAy1EOk0Fa4lN"><div id="resume" class="relative isolate overflow-hidden bg-[var(--background)] px-6 py-24 sm:py-32 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-4xl font-bold tracking-tight text-[var(--foreground)] sm:text-6xl">My Resume</h2>
+    <p class="mt-6 text-lg/8 text-[var(--muted-foreground)]">Explore my professional journey, skills, and accomplishments as a Computer Science Graduate. Download my full resume to learn more about my experience in software development, machine learning, and data analysis.</p>
+    <div class="mt-10 flex items-center justify-center gap-x-6">
+      <a href="#" class="rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-background)]">Download Resume (PDF)</a>
+      <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)]">Contact Me <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="mx-auto mt-16 max-w-4xl">
+    <img class="w-full rounded-xl shadow-xl ring-1 ring-[var(--border)]" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/210587548.jpg" alt="Modern resume template preview in blue style">
+  </div>
+</div></section><section id="JRgxaHDX6cwPsQiv"><div id="projects" class="bg-[var(--background)] py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-balance text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">My Recent Projects</h2>
+      <p class="mt-2 text-lg/8 text-[var(--muted-foreground)]">Showcasing my work in full-stack development, machine learning, and data analysis.</p>
+    </div>
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/412245171.jpg" alt="Technical Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2023-05-01" class="text-[var(--muted-foreground)]">May 2023</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Full-Stack Development</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                E-commerce Platform with AI Recommendations
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Developed a full-stack e-commerce platform featuring secure payment gateways, user authentication, and an AI-powered product recommendation engine using collaborative filtering.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">React, Node.js, MongoDB, Python, TensorFlow</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/411739421.jpg" alt="Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2024-01-01" class="text-[var(--muted-foreground)]">Jan 2024</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Machine Learning</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Predictive Analytics for Customer Churn
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Implemented a machine learning model to predict customer churn for a telecom company, achieving 92% accuracy. Utilized Python with Scikit-learn, Pandas, and Matplotlib for data preprocessing and model evaluation.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">Python, Scikit-learn, Pandas, Matplotlib</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          <img src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/412245171.jpg" alt="Technical Product Data Sheet Template Layout" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <time datetime="2023-10-01" class="text-[var(--muted-foreground)]">Oct 2023</time>
+            <a href="#" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--secondary-background)]">Data Analysis</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="#">
+                <span class="absolute inset-0"></span>
+                Real-time Data Visualization Dashboard
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">Designed and developed an interactive dashboard for real-time sales data visualization. Integrated with a live database and provided customizable charts and filters for business intelligence.</p>
+          </div>
+          <div class="relative mt-8 flex items-center gap-x-4">
+            <div class="text-sm/6">
+              <p class="font-semibold text-[var(--foreground)]">
+                <a href="#">
+                  <span class="absolute inset-0"></span>
+                  Tech Stack
+                </a>
+              </p>
+              <p class="text-[var(--muted-foreground)]">Tableau, SQL, Python, Power BI</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div></section><section id="2TEIyYMMkDuaTn8C"><div id="contact" class="relative bg-[var(--background)]">
+  <div class="lg:absolute lg:inset-0 lg:left-1/2">
+    <img class="h-64 w-full bg-[var(--muted-background)] object-cover sm:h-80 lg:absolute lg:h-full" src="https://cdn.sitespark.ai/images/a125ee30-ad9d-4639-a6e5-9769be413969/416762366.jpg" alt="Professional working on a computer, representing communication and collaboration">
+  </div>
+  <div class="pb-24 pt-16 sm:pb-32 sm:pt-24 lg:mx-auto lg:grid lg:max-w-7xl lg:grid-cols-2 lg:pt-32">
+    <div class="px-6 lg:px-8">
+      <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+        <h2 class="text-pretty text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">Let's Connect</h2>
+        <p class="mt-2 text-lg/8 text-[var(--muted-foreground)]">I'm always open to discussing new projects, collaborations, or opportunities. Feel free to reach out using the form below!</p>
+        <form action="#" method="POST" class="mt-16">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+              <label for="first-name" class="block text-sm/6 font-semibold text-[var(--foreground)]">First name</label>
+              <div class="mt-2.5">
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div>
+              <label for="last-name" class="block text-sm/6 font-semibold text-[var(--foreground)]">Last name</label>
+              <div class="mt-2.5">
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="email" class="block text-sm/6 font-semibold text-[var(--foreground)]">Email</label>
+              <div class="mt-2.5">
+                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="company" class="block text-sm/6 font-semibold text-[var(--foreground)]">Company / Organization</label>
+              <div class="mt-2.5">
+                <input type="text" name="company" id="company" autocomplete="organization" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="flex justify-between text-sm/6">
+                <label for="phone" class="block font-semibold text-[var(--foreground)]">Phone</label>
+                <p id="phone-description" class="text-[var(--muted-foreground)]">Optional</p>
+              </div>
+              <div class="mt-2.5">
+                <input type="tel" name="phone" id="phone" autocomplete="tel" aria-describedby="phone-description" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="flex justify-between text-sm/6">
+                <label for="message" class="block text-sm/6 font-semibold text-[var(--foreground)]">Your Message</label>
+                <p id="message-description" class="text-[var(--muted-foreground)]">Max 500 characters</p>
+              </div>
+              <div class="mt-2.5">
+                <textarea id="message" name="message" rows="4" aria-describedby="message-description" class="block w-full rounded-md bg-[var(--card-background)] px-3.5 py-2 text-base text-[var(--card-foreground)] outline outline-1 -outline-offset-1 outline-[var(--border)] placeholder:text-[var(--muted-foreground)] focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-[var(--accent-background)]"></textarea>
+              </div>
+            </div>
+            <fieldset class="sm:col-span-2">
+              <legend class="block text-sm/6 font-semibold text-[var(--foreground)]">Type of Inquiry</legend>
+              <div class="mt-4 space-y-4 text-sm/6 text-[var(--muted-foreground)]">
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-job" name="inquiry" value="job_opportunity" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-job">Job Opportunity</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-collaboration" name="inquiry" value="collaboration" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-collaboration">Collaboration</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-project" name="inquiry" value="project_inquiry" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-project">Project Inquiry</label>
+                </div>
+                <div class="flex gap-x-2.5">
+                  <input id="inquiry-general" name="inquiry" value="general_question" type="radio" class="relative mt-1 size-4 appearance-none rounded-full border border-[var(--border)] before:absolute before:inset-1 before:rounded-full before:bg-[var(--card-background)] checked:border-[var(--accent-background)] checked:bg-[var(--accent-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-background)] disabled:border-[var(--border)] disabled:bg-[var(--muted-background)] disabled:before:bg-[var(--muted-foreground)] forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden">
+                  <label for="inquiry-general">General Question</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="mt-10 flex justify-end border-t border-[var(--border)] pt-8">
+            <button type="submit" class="rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-center text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--primary-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-background)]">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div></section>
+      </body>
+</html>
