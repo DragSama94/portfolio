@@ -87,5 +87,5 @@ A management system designed to streamline library operations.
 
 * **Email:** bhavyasury123@gmail.com
 * **Phone:** +91 8103191134
-* **LinkedIn:** [View Profile](#) * **LeetCode:** [View Profile](#) ---
+* **LinkedIn:** [[View Profile](https://www.linkedin.com/in/bhavya-suryawanshi/)] * **LeetCode:** [[View Profile](https://leetcode.com/u/Bhavya_Suryawanshi/)] ---
 *© 2026 Bhavya Suryawanshi*
