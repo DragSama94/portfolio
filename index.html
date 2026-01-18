@@ -1,639 +1,748 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" data-theme="dark">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio of Bhavya Suryawanshi, a Computer Science graduate skilled in Java, Spring Boot, AWS, and Salesforce. View projects and certifications.">
-    <meta name="keywords" content="Bhavya Suryawanshi, Java Developer, Spring Boot, AWS, Salesforce, Computer Science, Portfolio">
-    <meta name="author" content="Bhavya Suryawanshi">
-    <meta name="robots" content="index, follow">
+    <title>Bhavya Suryawanshi | Full-Stack & Cloud Engineer</title>
     
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="#">
-    <meta property="og:title" content="Bhavya Suryawanshi - Java & Cloud Developer">
-    <meta property="og:description" content="Motivated CS graduate building scalable solutions with Java, Spring Boot, and AWS.">
-    <meta property="og:image" content="assets/og-image.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Hind:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Bhavya Suryawanshi - Java & Cloud Developer">
-    <meta property="twitter:description" content="Motivated CS graduate building scalable solutions with Java, Spring Boot, and AWS.">
-
-    <title>Bhavya Suryawanshi | Java & Cloud Developer</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Hind:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Bhavya Suryawanshi",
-      "jobTitle": "Software Engineer",
-      "email": "bhavyasury123@gmail.com",
-      "telephone": "+918103191134",
-      "alumniOf": "Lakshmi Narain College of Technology",
-      "knowsAbout": ["Java", "Spring Boot", "AWS", "Salesforce", "React", "SQL"]
-    }
-    </script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-background: var(--bg-body);
+            --color-surface: var(--bg-card);
+            --color-surface-hover: var(--bg-card-hover);
+            --color-text-main: var(--text-main);
+            --color-text-muted: var(--text-muted);
+            --color-primary: var(--accent);
+            --color-primary-dark: var(--accent-dark);
+            --color-border: var(--border);
+            
+            --font-display: 'Montserrat', sans-serif;
+            --font-body: 'Hind', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+    </style>
 
     <style>
-        /* Base Settings */
-        body {
-            font-family: 'Hind', sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Variables for Theme Switching */
+        /* --- 1. THEME VARIABLES --- */
         :root {
-            /* Light Theme (Default fallback) */
-            --background: #f8fafc;       /* Slate 50 */
-            --foreground: #0f172a;       /* Slate 900 */
-            --card-background: #ffffff;  /* White */
-            --card-foreground: #334155;  /* Slate 700 */
-            --primary-background: #2563eb; /* Blue 600 */
-            --primary-foreground: #ffffff;
-            --secondary-background: #e2e8f0; /* Slate 200 */
-            --secondary-foreground: #475569; /* Slate 600 */
-            --muted-background: #f1f5f9;   /* Slate 100 */
-            --muted-foreground: #64748b;   /* Slate 500 */
-            --accent-background: #3b82f6;  /* Blue 500 */
-            --border: #e2e8f0;             /* Slate 200 */
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Dark Theme Override */
-        [data-theme="dark"] {
-            --background: #020617;       /* Slate 950 */
-            --foreground: #f1f5f9;       /* Slate 100 */
-            --card-background: #0f172a;  /* Slate 900 */
-            --card-foreground: #cbd5e1;  /* Slate 300 */
-            --primary-background: #3b82f6; /* Blue 500 */
-            --primary-foreground: #ffffff;
-            --secondary-background: #1e293b; /* Slate 800 */
-            --secondary-foreground: #94a3b8; /* Slate 400 */
-            --muted-background: #1e293b;   /* Slate 800 */
-            --muted-foreground: #94a3b8;   /* Slate 400 */
-            --accent-background: #60a5fa;  /* Blue 400 */
-            --border: #1e293b;             /* Slate 800 */
+        /* Theme 1: Midnight Blue (Default) */
+        body {
+            --bg-body: #020617;
+            --bg-card: rgba(15, 23, 42, 0.7);
+            --bg-card-hover: rgba(30, 41, 59, 0.9);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.6);
+            --border: rgba(59, 130, 246, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
         }
 
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.5, 0, 0, 1);
+        /* Theme 2: Neon Pink */
+        body.theme-pink {
+            --bg-body: #0a0508;
+            --bg-card: rgba(22, 8, 17, 0.7);
+            --bg-card-hover: rgba(36, 12, 26, 0.9);
+            --text-main: #fff0f5;
+            --text-muted: #dcc5d0;
+            --accent: #ff0080;
+            --accent-dark: #d6006b;
+            --accent-glow: rgba(255, 0, 128, 0.6);
+            --border: rgba(255, 0, 128, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #1a0510 0%, #0a0508 100%);
         }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Theme 3: Sunrise Orange */
+        body.theme-orange {
+            --bg-body: #fff7ed;
+            --bg-card: rgba(255, 255, 255, 0.7);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --text-main: #431407;
+            --text-muted: #9a3412;
+            --accent: #ea580c;
+            --accent-dark: #c2410c;
+            --accent-glow: rgba(234, 88, 12, 0.35);
+            --border: rgba(234, 88, 12, 0.25);
+            --gradient-bg: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
         }
-        
-        /* Scroll Progress Bar */
-        #scroll-progress {
+
+        /* Theme 4: Forest Emerald */
+        body.theme-green {
+            --bg-body: #022c22;
+            --bg-card: rgba(6, 78, 59, 0.7);
+            --bg-card-hover: rgba(6, 95, 70, 0.9);
+            --text-main: #ecfdf5;
+            --text-muted: #6ee7b7;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --accent-glow: rgba(16, 185, 129, 0.55);
+            --border: rgba(16, 185, 129, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #064e3b 0%, #022c22 100%);
+        }
+
+        /* Theme 5: Royal Amethyst */
+        body.theme-purple {
+            --bg-body: #1e0a2e;
+            --bg-card: rgba(46, 16, 101, 0.7);
+            --bg-card-hover: rgba(88, 28, 135, 0.9);
+            --text-main: #faf5ff;
+            --text-muted: #d8b4fe;
+            --accent: #d946ef;
+            --accent-dark: #c026d3;
+            --accent-glow: rgba(217, 70, 239, 0.55);
+            --border: rgba(217, 70, 239, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #2e1065 0%, #1e0a2e 100%);
+        }
+
+        /* Theme 6: Crimson Red */
+        body.theme-red {
+            --bg-body: #1a0505;
+            --bg-card: rgba(40, 10, 10, 0.7);
+            --bg-card-hover: rgba(60, 20, 20, 0.9);
+            --text-main: #ffe0e0;
+            --text-muted: #fca5a5;
+            --accent: #dc2626;
+            --accent-dark: #b91c1c;
+            --accent-glow: rgba(220, 38, 38, 0.55);
+            --border: rgba(220, 38, 38, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #2b0a0a 0%, #1a0505 100%);
+        }
+
+        /* Theme 7: Cyber Cyan */
+        body.theme-cyan {
+            --bg-body: #083344;
+            --bg-card: rgba(21, 94, 117, 0.6);
+            --bg-card-hover: rgba(22, 78, 99, 0.85);
+            --text-main: #cffafe;
+            --text-muted: #67e8f9;
+            --accent: #06b6d4;
+            --accent-dark: #0891b2;
+            --accent-glow: rgba(6, 182, 212, 0.55);
+            --border: rgba(6, 182, 212, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 50%, #164e63 0%, #083344 100%);
+        }
+
+        /* --- 2. GLOBAL STYLES --- */
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            transition: var(--transition);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Pattern */
+        .bg-mesh {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--accent-background);
-            z-index: 100;
-            transition: width 0.1s;
+            top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+            background: var(--gradient-bg);
+            transition: background 1s ease;
+        }
+        .bg-grid {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
 
-        /* Focus Visibility for Accessibility */
-        *:focus-visible {
-            outline: 2px solid var(--accent-background);
-            outline-offset: 2px;
+        /* Floating Orbs */
+        .moving-orb {
+            position: fixed; border-radius: 50%; filter: blur(90px); opacity: 0.35; z-index: -1;
+            animation: moveOrb 20s infinite alternate; background: var(--accent);
+            width: 500px; height: 500px; transition: background 1s ease;
+        }
+        .orb-1 { top: -10%; left: -10%; animation-duration: 25s; }
+        .orb-2 { bottom: -10%; right: -10%; animation-duration: 22s; animation-direction: alternate-reverse; }
+        @keyframes moveOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 100px) scale(1.1); }
+        }
+
+        /* --- 3. ANIMATIONS & EFFECTS --- */
+        .reveal {
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--text-main), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
         
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        /* Outline Text for Backgrounds - Increased Visibility */
+        .text-outline {
+            -webkit-text-stroke: 2px var(--text-muted); color: transparent; opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: var(--bg-card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        .glass-card:hover {
+            background: var(--bg-card-hover); border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow); transform: translateY(-5px);
+        }
+
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+            z-index: 100; width: 0%; box-shadow: 0 0 15px var(--accent); transition: width 0.1s linear;
+        }
+
+        /* --- 4. NAVIGATION STYLES --- */
+        .nav-pill {
+            background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border);
+            border-radius: 9999px; padding: 0.8rem 2.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-pill.scrolled {
+            padding: 0.5rem 1.5rem; box-shadow: 0 10px 30px -10px var(--accent-glow);
+            background: var(--bg-body); border-color: var(--accent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white; box-shadow: 0 10px 20px -5px var(--accent-glow);
+            border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;
+        }
+        .btn-primary::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-primary:hover::after { left: 100%; }
+        .btn-primary:hover {
+            transform: translateY(-3px); box-shadow: 0 15px 30px -5px var(--accent-glow);
+        }
+
+        .theme-fab {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            border-radius: 50%; background: var(--accent); color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            box-shadow: 0 0 30px var(--accent-glow); cursor: pointer; z-index: 99;
+            transition: var(--transition);
+        }
+        .theme-fab:hover { transform: rotate(180deg) scale(1.1); box-shadow: 0 0 50px var(--accent-glow); }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        .morph-img {
+            animation: morph 8s ease-in-out infinite; border: 4px solid var(--accent);
+            box-shadow: 0 0 50px var(--accent-glow);
+        }
+        
+        /* Floating Icons Animation */
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-icon { animation: floatIcon 6s ease-in-out infinite; }
+        .float-icon:hover { 
+            animation-play-state: paused; 
+            transform: scale(1.2); 
+            filter: drop-shadow(0 0 10px var(--accent));
+            color: var(--accent);
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-[var(--primary-background)] selection:text-white">
+<body class="selection:bg-primary selection:text-white">
 
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[60] bg-[var(--primary-background)] text-white px-4 py-2 rounded-md">
-        Skip to content
-    </a>
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="moving-orb orb-1"></div>
+    <div class="moving-orb orb-2"></div>
+    <div class="scroll-progress" id="scroll-progress"></div>
 
-    <div id="scroll-progress"></div>
+    <button class="theme-fab" id="theme-toggle" title="Switch Theme">
+        <i class="fas fa-palette"></i>
+    </button>
 
-    <header class="fixed w-full z-50 border-b border-[var(--border)] bg-[var(--background)]/90 backdrop-blur-md transition-colors duration-300">
-        <nav class="max-w-7xl mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-            <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5 text-[var(--accent-background)] font-bold text-2xl tracking-tighter hover:text-[var(--foreground)] transition-colors">
-                   &lt;BS /&gt;
-                </a>
-            </div>
+    <header class="fixed top-6 w-full z-50 transition-all duration-300 flex justify-center pointer-events-none" id="navbar-container">
+        <nav class="nav-pill flex items-center gap-12 pointer-events-auto">
+            <a href="#home" class="text-2xl font-black tracking-tighter text-gradient hover:scale-105 transition-transform">
+               &lt;BS /&gt;
+            </a>
             
-            <div class="flex items-center gap-4 lg:hidden">
-                <button id="theme-toggle-mobile" class="p-2 rounded-full text-[var(--foreground)] hover:bg-[var(--secondary-background)] transition-colors" aria-label="Toggle Dark Mode">
-                    <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                    <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                </button>
-
-                <button type="button" id="mobile-menu-open" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--foreground)] hover:text-[var(--accent-background)]" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open main menu">
-                    <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
+            <div class="hidden lg:flex gap-8">
+                <a href="#home" class="text-xs font-bold uppercase tracking-widest text-text-muted hover:text-primary transition-all hover:-translate-y-0.5">Home</a>
+                <a href="#skills" class="text-xs font-bold uppercase tracking-widest text-text-muted hover:text-primary transition-all hover:-translate-y-0.5">Skills</a>
+                <a href="#experience" class="text-xs font-bold uppercase tracking-widest text-text-muted hover:text-primary transition-all hover:-translate-y-0.5">Journey</a>
+                <a href="#projects" class="text-xs font-bold uppercase tracking-widest text-text-muted hover:text-primary transition-all hover:-translate-y-0.5">Work</a>
+                <a href="#contact" class="text-xs font-bold uppercase tracking-widest text-text-muted hover:text-primary transition-all hover:-translate-y-0.5">Contact</a>
             </div>
 
-            <div class="hidden lg:flex lg:gap-x-8 items-center">
-                <a href="#home" class="text-sm font-semibold leading-6 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">Home</a>
-                <a href="#skills" class="text-sm font-semibold leading-6 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">Skills</a>
-                <a href="#projects" class="text-sm font-semibold leading-6 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">Projects</a>
-                <a href="#certifications" class="text-sm font-semibold leading-6 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">Certifications</a>
-                <a href="#contact" class="text-sm font-semibold leading-6 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">Contact</a>
-                
-                <button id="theme-toggle-desktop" class="ml-4 p-2 rounded-full text-[var(--foreground)] hover:bg-[var(--secondary-background)] transition-colors" aria-label="Toggle Dark Mode">
-                    <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                    <svg class="w-5 h-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
-                </button>
-            </div>
+            <button id="mobile-menu-open" class="lg:hidden text-text-main hover:text-primary transition-colors">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </nav>
 
-        <div class="lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-menu">
-            <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" id="mobile-backdrop"></div>
-            <div class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[var(--card-background)] px-6 py-6 sm:max-w-sm border-l border-[var(--border)] shadow-2xl transition-transform transform translate-x-full" id="mobile-menu-panel">
-                <div class="flex items-center justify-between">
-                    <a href="#" class="-m-1.5 p-1.5 text-[var(--accent-background)] font-bold text-xl">&lt;BS /&gt;</a>
-                    <button type="button" id="mobile-menu-close" class="-m-2.5 rounded-md p-2.5 text-[var(--foreground)] hover:text-[var(--accent-background)]">
-                        <span class="sr-only">Close menu</span>
-                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-                    </button>
-                </div>
-                <div class="mt-6 flow-root">
-                    <div class="-my-6 divide-y divide-[var(--border)]">
-                        <div class="space-y-2 py-6">
-                            <a href="#home" class="mobile-link -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--foreground)] hover:bg-[var(--secondary-background)]">Home</a>
-                            <a href="#skills" class="mobile-link -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--foreground)] hover:bg-[var(--secondary-background)]">Skills</a>
-                            <a href="#projects" class="mobile-link -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--foreground)] hover:bg-[var(--secondary-background)]">Projects</a>
-                            <a href="#certifications" class="mobile-link -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--foreground)] hover:bg-[var(--secondary-background)]">Certifications</a>
-                            <a href="#contact" class="mobile-link -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--foreground)] hover:bg-[var(--secondary-background)]">Contact</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center justify-center space-y-8 pointer-events-auto">
+            <button id="mobile-menu-close" class="absolute top-6 right-6 text-text-main text-2xl hover:text-primary">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="#home" class="text-2xl font-bold text-text-main hover:text-primary mobile-link">Home</a>
+            <a href="#skills" class="text-2xl font-bold text-text-main hover:text-primary mobile-link">Skills</a>
+            <a href="#experience" class="text-2xl font-bold text-text-main hover:text-primary mobile-link">Journey</a>
+            <a href="#projects" class="text-2xl font-bold text-text-main hover:text-primary mobile-link">Work</a>
+            <a href="#contact" class="text-2xl font-bold text-text-main hover:text-primary mobile-link">Contact</a>
         </div>
     </header>
 
-    <main id="main-content">
-        <section id="home" class="pt-32 lg:pt-40 pb-16 overflow-hidden relative">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
-                    
-                    <div class="lg:pr-8 reveal">
-                        <p class="text-base font-bold text-[var(--accent-background)] mb-2">Hi — I’m Bhavya Suryawanshi</p>
-                        <h1 class="text-4xl font-extrabold tracking-tight text-[var(--foreground)] sm:text-5xl mb-4">
-                            Java, Spring Boot &<br>AWS Developer
-                        </h1>
-                        <p class="mt-4 text-lg leading-8 text-[var(--muted-foreground)]">
-                            Computer Science graduate with foundational knowledge in Java, Python, and SQL. Currently expanding expertise in AWS cloud technologies and Salesforce. Passionate about building scalable software solutions.
-                        </p>
-                        <p class="mt-2 text-base font-semibold text-[var(--foreground)] border-l-4 border-[var(--accent-background)] pl-4">
-                            Available for hire — Open to Software Engineering roles.
-                        </p>
-                        
-                        <div class="mt-8 flex items-center gap-4">
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-[var(--secondary-background)] text-[var(--foreground)] hover:bg-[var(--accent-background)] hover:text-white transition-all hover:-translate-y-1" aria-label="GitHub Profile">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
-                            </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-[var(--secondary-background)] text-[var(--foreground)] hover:bg-[#0077b5] hover:text-white transition-all hover:-translate-y-1" aria-label="LinkedIn Profile">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            </a>
-                            <a href="#projects" class="ml-4 rounded-md bg-[var(--primary-background)] px-5 py-2.5 text-sm font-semibold text-[var(--primary-foreground)] hover:bg-[var(--accent-background)] transition-colors shadow-lg shadow-[var(--primary-background)]/20">
-                                View Projects
-                            </a>
-                        </div>
+    <main>
+        <section id="home" class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal z-10">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-primary/30 text-primary text-sm font-bold mb-6 hover:scale-105 transition-transform cursor-default">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Available for Hire</span>
                     </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-text-main mb-6 leading-[1.1]">
+                        Bhavya <br> <span class="text-gradient">Suryawanshi</span>
+                    </h1>
+                    <p class="text-xl text-text-muted mb-8 max-w-lg leading-relaxed font-light">
+                        Full-Stack Engineer merging the power of <strong class="text-primary">Java</strong> with modern <strong class="text-primary">CSS</strong> design. Building scalable cloud solutions on AWS & Salesforce.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-bold transition-all text-white flex items-center gap-2">
+                            View Work <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="px-8 py-4 rounded-full border-2 border-border text-text-main font-bold hover:border-primary hover:text-primary transition-all bg-background/50 hover:bg-background/80">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
 
-                    <div class="relative reveal delay-200">
-                        <div class="absolute -inset-4 bg-gradient-to-r from-[var(--primary-background)] to-[var(--accent-background)] opacity-10 blur-3xl rounded-full"></div>
+                <div class="relative flex justify-center lg:justify-end reveal delay-[200ms] z-10">
+                    <div class="w-80 h-80 md:w-[450px] md:h-[450px] relative z-10">
                         <img src="assets/portrait.jpg" 
-                             alt="Portrait of Bhavya Suryawanshi" 
-                             loading="eager"
-                             class="relative aspect-[4/5] w-full max-w-[380px] rounded-2xl object-cover shadow-2xl ring-1 ring-[var(--border)] mx-auto lg:mx-0 bg-[var(--secondary-background)]">
-                        
-                        <div class="absolute bottom-6 -right-4 lg:-right-8 bg-[var(--card-background)] p-4 rounded-xl border border-[var(--border)] shadow-xl flex items-center gap-4 animate-bounce-slow max-w-xs">
-                            <div class="bg-green-500/10 p-2 rounded-full flex-shrink-0">
-                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                            </div>
-                            <div>
-                                <p class="text-xs text-[var(--muted-foreground)] font-medium">Status</p>
-                                <p class="text-sm font-bold text-[var(--foreground)]">Open to Work</p>
-                            </div>
+                             alt="Bhavya Suryawanshi" 
+                             class="w-full h-full object-cover morph-img bg-surface">
+                    </div>
+                    
+                    <div class="absolute -bottom-8 -left-8 text-7xl text-primary drop-shadow-[0_0_15px_rgba(var(--accent),0.5)] float-icon" style="animation-delay: 0s;">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    
+                    <div class="absolute top-0 right-12 text-6xl text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] float-icon cursor-pointer" style="animation-delay: 1.5s;" title="CSS3 Mastered">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+
+                    <div class="absolute top-1/2 -right-4 text-6xl text-blue-500 drop-shadow-lg float-icon" style="animation-delay: 2.5s;">
+                        <i class="fab fa-salesforce"></i>
+                    </div>
+
+                    <div class="absolute top-10 left-0 text-5xl text-orange-400 drop-shadow-lg float-icon" style="animation-delay: 3.5s;">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-32 relative">
+            <div class="absolute top-20 left-0 w-full overflow-hidden leading-none select-none pointer-events-none">
+                <h2 class="text-[15vw] font-black text-outline text-center whitespace-nowrap">ARSENAL</h2>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Expertise</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-text-main group cursor-default">
+                        Technical <span class="group-hover:text-primary transition-colors duration-300">Stack</span>
+                    </h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-8 rounded-2xl reveal delay-[100ms] text-center group hover:scale-[1.02]">
+                        <div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <i class="fas fa-server text-3xl"></i>
                         </div>
+                        <h4 class="text-xl font-bold text-text-main mb-2">Backend</h4>
+                        <p class="text-text-muted text-sm">Java, Spring Boot 3, Hibernate, Microservices, REST APIs</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl reveal delay-[200ms] text-center group hover:scale-[1.02]">
+                        <div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <i class="fab fa-css3-alt text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-text-main mb-2">Frontend & Design</h4>
+                        <p class="text-text-muted text-sm">CSS3, Tailwind CSS, React, HTML5, Responsive Design</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl reveal delay-[300ms] text-center group hover:scale-[1.02]">
+                        <div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <i class="fab fa-aws text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-text-main mb-2">Cloud & AI</h4>
+                        <p class="text-text-muted text-sm">AWS Foundations, ChatGPT API, Prompt Engineering</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-2xl reveal delay-[400ms] text-center group hover:scale-[1.02]">
+                        <div class="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                            <i class="fab fa-salesforce text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-text-main mb-2">Salesforce</h4>
+                        <p class="text-text-muted text-sm">Apex, Lightning Web Components (LWC), Agentforce</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="border-y border-[var(--border)] bg-[var(--card-background)] py-10 reveal">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="flex flex-wrap justify-center gap-x-12 gap-y-8 text-center sm:text-left">
-                    <div class="space-y-2">
-                        <h3 class="text-sm font-semibold text-[var(--accent-background)] tracking-wider uppercase">Backend</h3>
-                        <p class="text-[var(--foreground)] font-medium">Java • Spring Boot • Hibernate • MySQL</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-sm font-semibold text-[var(--accent-background)] tracking-wider uppercase">Frontend</h3>
-                        <p class="text-[var(--foreground)] font-medium">React • JavaScript • Thymeleaf • HTML/CSS</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-sm font-semibold text-[var(--accent-background)] tracking-wider uppercase">Cloud & AI</h3>
-                        <p class="text-[var(--foreground)] font-medium">AWS Cloud • Prompt Engineering • ChatGPT API</p>
-                    </div>
-                    <div class="space-y-2">
-                        <h3 class="text-sm font-semibold text-[var(--accent-background)] tracking-wider uppercase">Platforms</h3>
-                        <p class="text-[var(--foreground)] font-medium">Salesforce (Apex, LWC) • Git • Docker</p>
-                    </div>
-                </div>
+        <section id="experience" class="py-32 bg-surface/20 relative">
+            <div class="absolute top-20 left-0 w-full overflow-hidden leading-none select-none pointer-events-none">
+                <h2 class="text-[15vw] font-black text-outline text-center whitespace-nowrap">JOURNEY</h2>
             </div>
-        </section>
 
-        <section class="py-24 bg-[var(--background)]">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-2xl lg:max-w-none">
-                    <div class="flex flex-col lg:flex-row gap-12 items-center">
-                        <div class="lg:w-1/2 reveal">
-                            <span class="text-[var(--accent-background)] font-bold tracking-wide text-sm uppercase">Latest Project (Jan 2025)</span>
-                            <h2 class="text-3xl font-bold text-[var(--foreground)] mt-2 mb-4">Job Portal Web Application</h2>
-                            <p class="text-lg text-[var(--muted-foreground)] mb-6">
-                                A full-stack application enabling recruiters to post jobs and seekers to apply. Built with a focus on secure authentication and responsive UI.
+            <div class="mx-auto max-w-5xl px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Experience</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-text-main">Professional Path</h3>
+                </div>
+
+                <div class="relative border-l-2 border-primary/30 ml-4 md:ml-12 space-y-12">
+                    <div class="relative pl-8 md:pl-12 reveal delay-[100ms]">
+                        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary ring-4 ring-background shadow-[0_0_10px_var(--accent)]"></div>
+                        <div class="glass-card p-8 rounded-2xl hover:border-primary transition-colors">
+                            <span class="text-primary text-xs font-bold tracking-widest uppercase mb-2 block">Internship</span>
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                                <h4 class="text-2xl font-bold text-text-main">Salesforce Developer Intern</h4>
+                                <span class="text-text-muted font-mono text-sm bg-surface-hover px-3 py-1 rounded border border-border">8 Weeks</span>
+                            </div>
+                            <p class="text-text-muted mb-4 leading-relaxed">
+                                Completed an intensive 8-week program focusing on the Salesforce ecosystem. Gained hands-on experience in customizing CRM solutions.
                             </p>
-                            <ul class="space-y-3 mb-8 text-[var(--foreground)]">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                    <span><strong>Backend:</strong> Spring Boot 3, Spring Security, Spring MVC, JPA.</span>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-text-main text-sm">
+                                    <i class="fas fa-code text-primary"></i> Developed custom business logic using <strong>Apex</strong>.
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                    <span><strong>Frontend:</strong> Designed responsive UI/UX using Thymeleaf.</span>
+                                <li class="flex items-center gap-3 text-text-main text-sm">
+                                    <i class="fas fa-bolt text-primary"></i> Built modern user interfaces with <strong>Lightning Web Components (LWC)</strong>.
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-500 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                                    <span><strong>Database:</strong> MySQL for persistent data management.</span>
+                                <li class="flex items-center gap-3 text-text-main text-sm">
+                                    <i class="fas fa-award text-primary"></i> Earned the Salesforce Certified Agentblazer Specialist credential.
                                 </li>
                             </ul>
-                            <div class="flex gap-4">
-                                <a href="#" class="rounded-md bg-[var(--secondary-background)] px-4 py-2 text-sm font-semibold text-[var(--foreground)] hover:bg-[var(--border)] transition-colors">View Code</a>
-                            </div>
-                        </div>
-                        <div class="lg:w-1/2 reveal delay-200">
-                             <div class="rounded-xl bg-[var(--card-background)] border border-[var(--border)] p-2 shadow-2xl h-64 flex items-center justify-center">
-                                
-                                
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="bg-[var(--card-background)] py-24 border-y border-[var(--border)]">
+        <section id="projects" class="py-32 relative">
+            <div class="absolute top-20 left-0 w-full overflow-hidden leading-none select-none pointer-events-none">
+                <h2 class="text-[15vw] font-black text-outline text-center whitespace-nowrap">PROJECTS</h2>
+            </div>
+
+            <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Portfolio</h2>
+                        <h3 class="text-4xl md:text-5xl font-bold text-text-main">Recent Works</h3>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="glass-card rounded-2xl overflow-hidden group reveal delay-[100ms] hover:shadow-2xl transition-all duration-500">
+                        <div class="h-60 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                            <div class="text-center p-6 transform group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-briefcase text-7xl text-primary/80 mb-4 drop-shadow-lg"></i>
+                                <div class="text-text-muted text-xs font-bold uppercase tracking-widest">Featured</div>
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+                        </div>
+                        <div class="p-8 relative">
+                            <h4 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">Job Portal App</h4>
+                            <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                Full-stack recruiting platform with secure auth and responsive UI.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">Spring Boot</span>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">Java</span>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">Thymeleaf</span>
+                            </div>
+                            <a href="#" class="btn-primary w-full py-3 rounded-lg font-bold flex justify-center items-center gap-2 text-sm">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="glass-card rounded-2xl overflow-hidden group reveal delay-[200ms] hover:shadow-2xl transition-all duration-500">
+                        <div class="h-60 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                             <i class="fas fa-robot text-7xl text-text-muted/30 group-hover:text-primary transition-colors duration-500 drop-shadow-lg"></i>
+                        </div>
+                        <div class="p-8 relative">
+                            <h4 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">E-Commerce AI</h4>
+                            <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                Intelligent chatbot integration assisting users with product queries.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">ChatGPT API</span>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">React</span>
+                            </div>
+                            <a href="#" class="text-sm font-bold text-text-main hover:text-primary transition-colors flex items-center gap-2 justify-center w-full py-3 border border-border rounded-lg hover:border-primary">
+                                View Case Study
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="glass-card rounded-2xl overflow-hidden group reveal delay-[300ms] hover:shadow-2xl transition-all duration-500">
+                        <div class="h-60 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                            <i class="fas fa-book text-7xl text-text-muted/30 group-hover:text-primary transition-colors duration-500 drop-shadow-lg"></i>
+                        </div>
+                        <div class="p-8 relative">
+                            <h4 class="text-2xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors">Library System</h4>
+                            <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                End-to-end management system handling inventory and user logs.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">MySQL</span>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">JDBC</span>
+                            </div>
+                            <a href="#" class="text-sm font-bold text-text-main hover:text-primary transition-colors flex items-center gap-2 justify-center w-full py-3 border border-border rounded-lg hover:border-primary">
+                                View Case Study
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-surface/20">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="text-center mb-12 reveal">
-                    <h2 class="text-3xl font-bold text-[var(--foreground)]">Academic & Personal Projects</h2>
-                    <p class="mt-2 text-[var(--muted-foreground)]">Applying theory to real-world applications.</p>
-                    
-                    <div class="mt-8 flex flex-wrap justify-center gap-2" id="project-filters">
-                        <button class="filter-btn active rounded-full px-4 py-1.5 text-sm font-medium transition-colors bg-[var(--primary-background)] text-white" data-filter="all">All</button>
-                        <button class="filter-btn rounded-full px-4 py-1.5 text-sm font-medium transition-colors bg-[var(--secondary-background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]" data-filter="backend">Backend</button>
-                        <button class="filter-btn rounded-full px-4 py-1.5 text-sm font-medium transition-colors bg-[var(--secondary-background)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]" data-filter="ai">AI / Cloud</button>
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal">
+                        <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Workflow</h2>
+                        <h3 class="text-4xl md:text-5xl font-bold text-text-main mb-6">My Approach</h3>
+                        <p class="text-text-muted text-lg leading-relaxed mb-8">
+                            I believe in writing clean, maintainable code that scales. My development process is rooted in Agile methodologies, ensuring iterative improvement.
+                        </p>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-white transition-colors text-xl">1</div>
+                                <div>
+                                    <h4 class="text-text-main font-bold text-lg">Discover & Plan</h4>
+                                    <p class="text-text-muted text-sm mt-1">Understanding requirements and designing the architecture.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-white transition-colors text-xl">2</div>
+                                <div>
+                                    <h4 class="text-text-main font-bold text-lg">Develop & Test</h4>
+                                    <p class="text-text-muted text-sm mt-1">Writing efficient code with rigorous unit testing.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-primary font-bold shrink-0 group-hover:bg-primary group-hover:text-white transition-colors text-xl">3</div>
+                                <div>
+                                    <h4 class="text-text-main font-bold text-lg">Deploy & Optimize</h4>
+                                    <p class="text-text-muted text-sm mt-1">CI/CD pipelines and performance tuning.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <article class="project-card flex flex-col bg-[var(--background)] rounded-2xl border border-[var(--border)] overflow-hidden hover:border-[var(--accent-background)] transition-all duration-300 reveal group" data-tags="ai backend">
-                        <div class="h-48 bg-[var(--secondary-background)] flex items-center justify-center overflow-hidden">
-                             <svg class="text-[var(--muted-foreground)] w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
+                    <div class="reveal delay-[200ms] grid grid-cols-2 gap-4">
+                        <div class="glass-card p-8 rounded-2xl text-center hover:scale-105 transition-transform">
+                            <i class="fas fa-code-branch text-4xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-text-main">Version Control</h4>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex gap-2 mb-3 flex-wrap">
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">AI</span>
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">ChatGPT API</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[var(--foreground)] mb-2">E-Commerce AI Platform</h3>
-                            <div class="text-sm text-[var(--muted-foreground)] space-y-2 mb-6 flex-grow">
-                                <p><strong>Overview:</strong> Final year major project enhancing user engagement.</p>
-                                <p><strong>Key Feature:</strong> Integrated AI chatbot using ChatGPT API for context-aware support.</p>
-                                <p><strong>Result:</strong> Real-time user assistance and improved navigation.</p>
-                            </div>
+                        <div class="glass-card p-8 rounded-2xl text-center mt-8 hover:scale-105 transition-transform">
+                            <i class="fas fa-bug text-4xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-text-main">Debugging</h4>
                         </div>
-                    </article>
-        
-                    <article class="project-card flex flex-col bg-[var(--background)] rounded-2xl border border-[var(--border)] overflow-hidden hover:border-[var(--accent-background)] transition-all duration-300 reveal delay-100 group" data-tags="backend">
-                        <div class="h-48 bg-[var(--secondary-background)] flex items-center justify-center overflow-hidden">
-                             <svg class="text-[var(--muted-foreground)] w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                        <div class="glass-card p-8 rounded-2xl text-center hover:scale-105 transition-transform">
+                            <i class="fas fa-users text-4xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-text-main">Agile</h4>
                         </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex gap-2 mb-3 flex-wrap">
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">Java</span>
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">MySQL</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[var(--foreground)] mb-2">E-Library System</h3>
-                            <div class="text-sm text-[var(--muted-foreground)] space-y-2 mb-6 flex-grow">
-                                <p><strong>Overview:</strong> End-to-end system for managing library operations.</p>
-                                <p><strong>Role:</strong> Led development from architecture design to feature implementation.</p>
-                                <p><strong>Stack:</strong> Java Core, MySQL database.</p>
-                            </div>
+                        <div class="glass-card p-8 rounded-2xl text-center mt-8 hover:scale-105 transition-transform">
+                            <i class="fas fa-rocket text-4xl text-primary mb-4"></i>
+                            <h4 class="font-bold text-text-main">Deployment</h4>
                         </div>
-                    </article>
-
-                    <article class="project-card flex flex-col bg-[var(--background)] rounded-2xl border border-[var(--border)] overflow-hidden hover:border-[var(--accent-background)] transition-all duration-300 reveal delay-200 group" data-tags="ai">
-                        <div class="h-48 bg-[var(--secondary-background)] flex items-center justify-center overflow-hidden">
-                             <svg class="text-[var(--muted-foreground)] w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex gap-2 mb-3 flex-wrap">
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">Salesforce</span>
-                                <span class="px-2 py-1 text-xs font-medium rounded-md bg-[var(--secondary-background)] text-[var(--accent-background)]">Apex</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-[var(--foreground)] mb-2">Salesforce Development</h3>
-                            <div class="text-sm text-[var(--muted-foreground)] space-y-2 mb-6 flex-grow">
-                                <p><strong>Overview:</strong> 8-week intensive internship program.</p>
-                                <p><strong>Focus:</strong> Development using Apex and Lightning Web Components (LWC).</p>
-                                <p><strong>Outcome:</strong> Gained practical experience in CRM customization.</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications" class="py-24 bg-[var(--background)] reveal">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-[var(--foreground)]">Education & Certifications</h2>
-                    <p class="mt-2 text-[var(--muted-foreground)]">Continuous learning and academic background.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="p-6 rounded-2xl bg-[var(--card-background)] border border-[var(--border)]">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="p-2 rounded-lg bg-[var(--secondary-background)] text-[var(--accent-background)]">
-                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
-                            </span>
-                            <h3 class="font-bold text-lg text-[var(--foreground)]">Education</h3>
-                        </div>
-                        <ul class="space-y-4">
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">B.Tech in Computer Science (AIDS)</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Lakshmi Narain College of Technology</p>
-                                <p class="text-xs text-[var(--muted-foreground)] mt-1">2022 - Present</p>
-                            </li>
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">HSC</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Macro Vision Academy (70.2%)</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="p-6 rounded-2xl bg-[var(--card-background)] border border-[var(--border)]">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="p-2 rounded-lg bg-[var(--secondary-background)] text-[var(--accent-background)]">
-                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            </span>
-                            <h3 class="font-bold text-lg text-[var(--foreground)]">Cloud & Development</h3>
-                        </div>
-                        <ul class="space-y-4">
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">AWS Academy Graduate</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Cloud Foundations</p>
-                            </li>
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">Spring Boot 3</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Udemy (Chad Darby)</p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="p-6 rounded-2xl bg-[var(--card-background)] border border-[var(--border)]">
-                         <div class="flex items-center gap-3 mb-4">
-                            <span class="p-2 rounded-lg bg-[var(--secondary-background)] text-[var(--accent-background)]">
-                                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                            </span>
-                            <h3 class="font-bold text-lg text-[var(--foreground)]">Salesforce</h3>
-                        </div>
-                        <ul class="space-y-4">
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">Certified Agentforce Specialist</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Salesforce Trailhead</p>
-                            </li>
-                            <li>
-                                <p class="font-semibold text-[var(--foreground)]">Certified Agentblazer Specialist</p>
-                                <p class="text-sm text-[var(--muted-foreground)]">Salesforce Trailhead</p>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="resume" class="py-24 px-6 lg:px-8 bg-[var(--card-background)] border-t border-[var(--border)] reveal">
-            <div class="mx-auto max-w-4xl text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl">Resume</h2>
+        <section id="resume" class="py-32 relative">
+            <div class="mx-auto max-w-4xl px-6 lg:px-8 text-center reveal">
+                <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Qualifications</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-text-main mb-12">Resume & Certs</h3>
                 
-                <div class="mt-8 mb-12">
-                    <a href="Resume_BhavyaSuryawanshi.pdf" download class="inline-flex items-center gap-2 rounded-md bg-[var(--primary-background)] px-6 py-3 text-sm font-semibold text-[var(--primary-foreground)] hover:bg-[var(--accent-background)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        Download Resume (PDF)
+                <div class="glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden text-left group hover:border-primary/50 transition-colors shadow-2xl">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-purple-500"></div>
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-border pb-8 mb-8">
+                        <div>
+                            <h3 class="text-3xl font-bold text-text-main">Bhavya Suryawanshi</h3>
+                            <p class="text-primary font-medium mt-1">Computer Science Engineer</p>
+                        </div>
+                        <a href="Resume_BhavyaSuryawanshi.pdf" download class="mt-4 md:mt-0 btn-primary px-6 py-3 rounded-full flex items-center gap-2 text-white font-bold transition-transform hover:scale-105">
+                            <i class="fas fa-download"></i> Download PDF
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
+                                <i class="fas fa-graduation-cap text-primary"></i> Education
+                            </h4>
+                            <div class="mb-4">
+                                <p class="text-text-main font-semibold">B.Tech Computer Science</p>
+                                <p class="text-text-muted text-sm">Lakshmi Narain College of Technology</p>
+                                <p class="text-primary text-xs font-bold mt-1">2022 - Present</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-text-main mb-4 flex items-center gap-2">
+                                <i class="fas fa-certificate text-primary"></i> Certifications
+                            </h4>
+                            <ul class="space-y-3 text-text-muted text-sm">
+                                <li class="flex gap-2"><i class="fas fa-check text-primary mt-1"></i> AWS Academy Cloud Foundations</li>
+                                <li class="flex gap-2"><i class="fas fa-check text-primary mt-1"></i> Salesforce Certified Agentforce</li>
+                                <li class="flex gap-2"><i class="fas fa-check text-primary mt-1"></i> Salesforce Certified Agentblazer</li>
+                                <li class="flex gap-2"><i class="fas fa-check text-primary mt-1"></i> Spring Boot 3 (Udemy)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-32 bg-surface/20">
+            <div class="mx-auto max-w-3xl px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-primary text-sm font-black uppercase tracking-[0.3em] mb-3">Contact</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-text-main">Let's Connect</h3>
+                </div>
+
+                <div class="flex justify-center gap-4 mb-12 flex-wrap reveal delay-[100ms]">
+                    <a href="mailto:bhavyasury123@gmail.com" class="px-8 py-4 rounded-full glass-card hover:border-primary transition-all flex items-center gap-3 text-text-main hover:scale-105 group">
+                        <i class="fas fa-envelope text-primary text-xl group-hover:scale-125 transition-transform"></i>
+                        <span class="font-bold">Email Me</span>
+                    </a>
+                    <a href="https://calendly.com/" target="_blank" class="px-8 py-4 rounded-full glass-card hover:border-primary transition-all flex items-center gap-3 text-text-main hover:scale-105 group">
+                        <i class="fas fa-calendar-alt text-primary text-xl group-hover:scale-125 transition-transform"></i>
+                        <span class="font-bold">Schedule Call</span>
                     </a>
                 </div>
 
-                <details class="group bg-[var(--background)] rounded-xl border border-[var(--border)] overflow-hidden shadow-sm">
-                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-4 text-[var(--foreground)] hover:bg-[var(--secondary-background)] transition-colors">
-                        <span>Preview Resume</span>
-                        <span class="transition group-open:rotate-180">
-                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                        </span>
-                    </summary>
-                    <div class="border-t border-[var(--border)] bg-[var(--muted-background)]">
-                        <iframe src="Resume_BhavyaSuryawanshi.pdf" class="w-full h-[600px] border-none" title="Resume Preview">
-                            <p class="p-4 text-center">Your browser does not support PDFs. <a href="Resume_BhavyaSuryawanshi.pdf">Download the PDF</a>.</p>
-                        </iframe>
+                <form action="https://formspree.io/f/REPLACE_ME_FORM_ID" method="POST" class="glass-card p-8 md:p-12 rounded-3xl space-y-6 reveal delay-[200ms]">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="group">
+                            <label class="block text-sm font-bold text-text-main mb-2 ml-1">Name</label>
+                            <input type="text" name="name" required class="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-text-main focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder-text-muted/50" placeholder="John Doe">
+                        </div>
+                        <div class="group">
+                            <label class="block text-sm font-bold text-text-main mb-2 ml-1">Email</label>
+                            <input type="email" name="email" required class="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-text-main focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder-text-muted/50" placeholder="john@example.com">
+                        </div>
                     </div>
-                </details>
+                    <div class="group">
+                        <label class="block text-sm font-bold text-text-main mb-2 ml-1">Message</label>
+                        <textarea name="message" rows="4" required class="w-full bg-background/50 border border-border rounded-xl px-4 py-4 text-text-main focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder-text-muted/50" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full btn-primary py-5 rounded-xl font-bold text-lg hover:scale-[1.01] transition-transform shadow-lg">
+                        Send Message
+                    </button>
+                </form>
+
+                <div class="flex justify-center gap-8 mt-12 text-3xl reveal delay-[300ms]">
+                    <a href="mailto:bhavyasury123@gmail.com" class="text-text-muted hover:text-primary transition-all hover:scale-125 hover:-translate-y-2"><i class="fas fa-envelope"></i></a>
+                    <a href="#" class="text-text-muted hover:text-primary transition-all hover:scale-125 hover:-translate-y-2"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-text-muted hover:text-primary transition-all hover:scale-125 hover:-translate-y-2"><i class="fab fa-github"></i></a>
+                </div>
             </div>
         </section>
-
-        <section id="contact" class="py-24 bg-[var(--background)] reveal">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16">
-                    <div>
-                        <h2 class="text-3xl font-bold text-[var(--foreground)]">Get in Touch</h2>
-                        <p class="mt-4 text-lg text-[var(--muted-foreground)]">
-                            I am actively seeking <strong class="text-[var(--foreground)]">Full-Stack</strong> or <strong class="text-[var(--foreground)]">Software Engineering</strong> roles.
-                        </p>
-                        <div class="mt-8 space-y-4">
-                            <a href="mailto:bhavyasury123@gmail.com" class="flex items-center gap-3 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">
-                                <svg class="w-6 h-6 text-[var(--accent-background)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                <span>bhavyasury123@gmail.com</span>
-                            </a>
-                            <a href="tel:+918103191134" class="flex items-center gap-3 text-[var(--foreground)] hover:text-[var(--accent-background)] transition-colors">
-                                <svg class="w-6 h-6 text-[var(--accent-background)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                <span>+91 8103191134</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <form action="https://formspree.io/f/REPLACE_ME_FORM_ID" method="POST" class="bg-[var(--card-background)] p-8 rounded-2xl border border-[var(--border)] shadow-sm">
-                        <div class="space-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-semibold text-[var(--foreground)]">Name</label>
-                                <input type="text" name="name" id="name" required class="mt-2 block w-full rounded-md border-0 bg-[var(--background)] px-3.5 py-2 text-[var(--foreground)] shadow-sm ring-1 ring-inset ring-[var(--border)] focus:ring-2 focus:ring-[var(--accent-background)]">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-semibold text-[var(--foreground)]">Email</label>
-                                <input type="email" name="email" id="email" required class="mt-2 block w-full rounded-md border-0 bg-[var(--background)] px-3.5 py-2 text-[var(--foreground)] shadow-sm ring-1 ring-inset ring-[var(--border)] focus:ring-2 focus:ring-[var(--accent-background)]">
-                            </div>
-                            <div>
-                                <label for="message" class="block text-sm font-semibold text-[var(--foreground)]">Message</label>
-                                <textarea name="message" id="message" rows="4" required class="mt-2 block w-full rounded-md border-0 bg-[var(--background)] px-3.5 py-2 text-[var(--foreground)] shadow-sm ring-1 ring-inset ring-[var(--border)] focus:ring-2 focus:ring-[var(--accent-background)]"></textarea>
-                            </div>
-                            <button type="submit" class="w-full rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--accent-background)] transition-all">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+        
+        <section class="py-16 border-t border-border bg-background/50 backdrop-blur-sm">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center reveal">
+                <p class="text-text-muted text-xs uppercase tracking-[0.2em] mb-6">Built with</p>
+                <div class="flex justify-center items-center gap-8 text-3xl text-text-muted">
+                    <i class="fab fa-html5 hover:text-[#E34F26] transition-colors hover:scale-110" title="HTML5"></i>
+                    <i class="fab fa-css3-alt hover:text-[#1572B6] transition-colors hover:scale-110" title="CSS3"></i>
+                    <i class="fab fa-js hover:text-[#F7DF1E] transition-colors hover:scale-110" title="JavaScript"></i>
+                    <i class="fab fa-java hover:text-primary transition-colors hover:scale-110" title="Java Logic"></i>
+                    <div class="h-6 w-[1px] bg-border"></div>
+                    <span class="font-mono text-sm font-bold hover:text-primary transition-colors">Tailwind CSS</span>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-[var(--card-background)] border-t border-[var(--border)] py-12">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8 text-center">
-            <p class="text-sm text-[var(--muted-foreground)]">
-                &copy; 2026 Bhavya Suryawanshi. All rights reserved.
-            </p>
-        </div>
+    <footer class="bg-surface py-8 text-center border-t border-border/50">
+        <p class="text-text-muted text-sm">&copy; 2026 Bhavya Suryawanshi. Crafted with precision.</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- 1. Theme Toggle Logic (with localStorage) ---
-            const themeBtns = [document.getElementById('theme-toggle-desktop'), document.getElementById('theme-toggle-mobile')];
-            const html = document.documentElement;
-            
-            // Check preference
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                html.setAttribute('data-theme', 'dark');
-            } else {
-                html.removeAttribute('data-theme');
-            }
+        // --- 1. FORCE SCROLL TO TOP ON LOAD ---
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
 
-            const toggleTheme = () => {
-                if (html.hasAttribute('data-theme')) {
-                    html.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            };
+        // --- 2. THEME SWITCHER (7 THEMES) ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        let themeState = 0;
+        const themes = ['', 'theme-pink', 'theme-orange', 'theme-green', 'theme-purple', 'theme-red', 'theme-cyan'];
 
-            themeBtns.forEach(btn => {
-                if(btn) btn.addEventListener('click', toggleTheme);
-            });
-
-            // --- 2. Mobile Menu Logic ---
-            const menuBtn = document.getElementById('mobile-menu-open');
-            const closeBtn = document.getElementById('mobile-menu-close');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobilePanel = document.getElementById('mobile-menu-panel');
-            const backdrop = document.getElementById('mobile-backdrop');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-
-            function openMenu() {
-                mobileMenu.classList.remove('hidden');
-                menuBtn.setAttribute('aria-expanded', 'true');
-                setTimeout(() => {
-                    mobilePanel.classList.remove('translate-x-full'); 
-                }, 10);
-            }
-
-            function closeMenu() {
-                mobilePanel.classList.add('translate-x-full');
-                menuBtn.setAttribute('aria-expanded', 'false');
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                }, 300); 
-            }
-
-            if(menuBtn) menuBtn.addEventListener('click', openMenu);
-            if(closeBtn) closeBtn.addEventListener('click', closeMenu);
-            if(backdrop) backdrop.addEventListener('click', closeMenu);
-            
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-
-            // --- 3. Scroll Progress Bar ---
-            window.addEventListener('scroll', () => {
-                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (winScroll / height) * 100;
-                document.getElementById("scroll-progress").style.width = scrolled + "%";
-            });
-
-            // --- 4. Project Filter Logic ---
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filterBtns.forEach(b => {
-                        b.classList.remove('bg-[var(--primary-background)]', 'text-white');
-                        b.classList.add('bg-[var(--secondary-background)]', 'text-[var(--muted-foreground)]');
-                    });
-                    btn.classList.remove('bg-[var(--secondary-background)]', 'text-[var(--muted-foreground)]');
-                    btn.classList.add('bg-[var(--primary-background)]', 'text-white');
-
-                    const filterValue = btn.getAttribute('data-filter');
-
-                    projectCards.forEach(card => {
-                        const tags = card.getAttribute('data-tags');
-                        if (filterValue === 'all' || tags.includes(filterValue)) {
-                            card.style.display = 'flex';
-                            card.classList.remove('active');
-                            setTimeout(() => card.classList.add('active'), 100); 
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            });
-
-            // --- 5. Intersection Observer for Animations ---
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        themeBtn.addEventListener('click', () => {
+            if(themes[themeState]) body.classList.remove(themes[themeState]);
+            themeState = (themeState + 1) % themes.length;
+            if(themes[themeState]) body.classList.add(themes[themeState]);
         });
+
+        // --- 3. SCROLL PROGRESS & NAVBAR SHRINK ---
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+
+            // Navbar Resize on Scroll
+            const navbar = document.querySelector('.nav-pill');
+            if (winScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        // --- 4. MOBILE MENU ---
+        const menuOpen = document.getElementById('mobile-menu-open');
+        const menuClose = document.getElementById('mobile-menu-close');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        
+        const toggleMenu = () => menu.classList.toggle('translate-x-full');
+        menuOpen.onclick = toggleMenu;
+        menuClose.onclick = toggleMenu;
+        links.forEach(l => l.onclick = toggleMenu);
+
+        // --- 5. ANIMATIONS ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
