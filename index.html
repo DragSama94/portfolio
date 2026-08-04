@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Bhavya Suryawanshi | Full-Stack Java & AI Engineer</title>
+    <meta name="description" content="Portfolio of Bhavya Suryawanshi, Full-Stack Java & AI Engineer specializing in Spring Boot, Python APIs, Docker, and enterprise cloud architectures.">
+    <meta name="keywords" content="Bhavya Suryawanshi, Full-Stack Developer, Java Engineer, Spring Boot, Python, AI Developer, Software Engineer, Salesforce, Docker">
+    
+    <meta property="og:title" content="Bhavya Suryawanshi | Full-Stack Java & AI Engineer">
+    <meta property="og:description" content="Explore the engineered systems, technical stack, and professional background of Bhavya Suryawanshi.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'var(--bg-body)',
+                        surface: 'var(--bg-card)',
+                        'surface-hover': 'var(--bg-card-hover)',
+                        primary: 'var(--accent)',
+                        'primary-dark': 'var(--accent-dark)',
+                        border: 'var(--border)',
+                    },
+                    fontFamily: {
+                        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        
+        :root {
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        
+        body {
+            --bg-body: #030712;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.45);
+            --border: rgba(59, 130, 246, 0.2);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #111827 0%, #030712 100%);
+        }
+
+        
+        body.theme-pink {
+            --bg-body: #0a0508;
+            --bg-card: rgba(26, 10, 20, 0.75);
+            --bg-card-hover: rgba(43, 15, 32, 0.9);
+            --text-main: #fff0f5;
+            --text-muted: #dcc5d0;
+            --accent: #ec4899;
+            --accent-dark: #db2777;
+            --accent-glow: rgba(236, 72, 153, 0.45);
+            --border: rgba(236, 72, 153, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #1f0a18 0%, #0a0508 100%);
+        }
+
+        
+        body.theme-orange {
+            --bg-body: #fffaf5;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-card-hover: rgba(255, 255, 255, 1);
+            --text-main: #1c1917;
+            --text-muted: #78716c;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --accent-glow: rgba(249, 115, 22, 0.3);
+            --border: rgba(249, 115, 22, 0.25);
+            --gradient-bg: linear-gradient(135deg, #fffaf5 0%, #ffedd5 100%);
+        }
+
+        
+        body.theme-green {
+            --bg-body: #021a14;
+            --bg-card: rgba(6, 44, 35, 0.75);
+            --bg-card-hover: rgba(6, 61, 48, 0.9);
+            --text-main: #ecfdf5;
+            --text-muted: #6ee7b7;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --accent-glow: rgba(16, 185, 129, 0.45);
+            --border: rgba(16, 185, 129, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #064e3b 0%, #021a14 100%);
+        }
+
+        
+        body.theme-purple {
+            --bg-body: #130720;
+            --bg-card: rgba(33, 15, 55, 0.75);
+            --bg-card-hover: rgba(53, 24, 88, 0.9);
+            --text-main: #faf5ff;
+            --text-muted: #d8b4fe;
+            --accent: #a855f7;
+            --accent-dark: #9333ea;
+            --accent-glow: rgba(168, 85, 247, 0.45);
+            --border: rgba(168, 85, 247, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #2e1065 0%, #130720 100%);
+        }
+
+        
+        body.theme-red {
+            --bg-body: #170404;
+            --bg-card: rgba(40, 10, 10, 0.75);
+            --bg-card-hover: rgba(65, 15, 15, 0.9);
+            --text-main: #fef2f2;
+            --text-muted: #fca5a5;
+            --accent: #ef4444;
+            --accent-dark: #dc2626;
+            --accent-glow: rgba(239, 68, 68, 0.45);
+            --border: rgba(239, 68, 68, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #3f1212 0%, #170404 100%);
+        }
+
+        
+        body.theme-cyan {
+            --bg-body: #041824;
+            --bg-card: rgba(12, 53, 78, 0.75);
+            --bg-card-hover: rgba(18, 74, 109, 0.9);
+            --text-main: #ecfeff;
+            --text-muted: #67e8f9;
+            --accent: #06b6d4;
+            --accent-dark: #0891b2;
+            --accent-glow: rgba(6, 182, 212, 0.45);
+            --border: rgba(6, 182, 212, 0.25);
+            --gradient-bg: radial-gradient(circle at 50% 20%, #164e63 0%, #041824 100%);
+        }
+
+        
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            transition: background 0.5s ease, color 0.5s ease;
+            overflow-x: clip;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .fluid-h1 { font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem); }
+        .fluid-h2 { font-size: clamp(1.75rem, 4vw + 0.5rem, 3rem); }
+
+        .bg-mesh {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2;
+            background: var(--gradient-bg); transition: background 0.8s ease;
+        }
+        
+        .bg-grid {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 36px 36px; opacity: 0.12;
+            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+        }
+
+        .moving-orb {
+            position: fixed; border-radius: 50%; filter: blur(120px); opacity: 0.2; z-index: -1;
+            animation: moveOrb 20s infinite alternate ease-in-out; background: var(--accent);
+            width: clamp(250px, 35vw, 450px); height: clamp(250px, 35vw, 450px); pointer-events: none;
+        }
+        .orb-1 { top: -10%; left: -5%; animation-duration: 24s; }
+        .orb-2 { bottom: -10%; right: -5%; animation-duration: 18s; animation-direction: alternate-reverse; }
+        @keyframes moveOrb {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(50px, 60px, 0) scale(1.15); }
+        }
+
+        
+        .ambient-card {
+            position: relative; overflow: hidden;
+            background: var(--bg-card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .ambient-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.05), transparent 40%);
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none; z-index: 1;
+        }
+
+        .ambient-card::after {
+            content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+            background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), var(--accent), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude;
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none; z-index: 2;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .ambient-card:hover::before,
+            .ambient-card:hover::after { opacity: 1; }
+            .ambient-card:hover {
+                background: var(--bg-card-hover); border-color: transparent;
+                box-shadow: 0 12px 30px -5px var(--accent-glow); transform: translateY(-3px);
+            }
+        }
+
+        
+        .reveal {
+            opacity: 0; transform: translate3d(0, 20px, 0);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--text-main) 10%, var(--accent) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--accent);
+            z-index: 100; width: 0%; box-shadow: 0 0 12px var(--accent); transition: width 0.1s linear;
+        }
+
+        .nav-pill {
+            background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border);
+            border-radius: 9999px; padding: 0.6rem 1.5rem;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @media (min-width: 640px) { .nav-pill { padding: 0.75rem 2rem; } }
+        .nav-pill.scrolled {
+            padding: 0.5rem 1.25rem; box-shadow: 0 10px 25px -10px var(--accent-glow);
+            background: var(--bg-body); border-color: var(--accent);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #ffffff; box-shadow: 0 8px 20px -6px var(--accent-glow);
+            border: 1px solid rgba(255,255,255,0.15); position: relative; overflow: hidden;
+            transition: all 0.25s ease; min-height: 44px;
+            display: inline-flex; align-items: center; justify-center;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px); box-shadow: 0 12px 25px -4px var(--accent-glow);
+        }
+        .btn-primary:active { transform: translateY(0); }
+
+        .theme-fab {
+            position: fixed; bottom: 24px; right: 24px; width: 52px; height: 52px;
+            border-radius: 50%; background: var(--accent); color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+            box-shadow: 0 0 25px var(--accent-glow); cursor: pointer; z-index: 90;
+            transition: var(--transition);
+        }
+        @media (min-width: 640px) { .theme-fab { bottom: 30px; right: 30px; width: 56px; height: 56px; } }
+        .theme-fab:hover { transform: rotate(180deg) scale(1.1); box-shadow: 0 0 35px var(--accent-glow); }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        .morph-img {
+            animation: morph 8s ease-in-out infinite; border: 3px solid var(--accent);
+            box-shadow: 0 0 35px var(--accent-glow);
+        }
+
+        .filter-btn { min-height: 38px; }
+        .filter-btn.active {
+            background: var(--accent); color: white; border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .tab-btn.active {
+            border-bottom: 2px solid var(--accent); color: var(--accent); font-weight: 700;
+        }
+
+        .modal-overlay {
+            opacity: 0; pointer-events: none; transition: all 0.25s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+
+        
+        #toast-notification {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translate3d(-50%, 100px, 0);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 9999;
+        }
+        #toast-notification.show { transform: translate3d(-50%, 0, 0); opacity: 1; }
+        
+        
+        .cmd-item { transition: all 0.15s ease; }
+        .cmd-item:hover, .cmd-item.selected {
+            background: var(--bg-card-hover); border-color: var(--accent);
+            color: var(--accent); padding-left: 1.25rem;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bhavya Suryawanshi",
+      "jobTitle": "Full-Stack Java & AI Engineer",
+      "url": "https://linkedin.com/in/bhavya-suryawanshi/",
+      "sameAs": [
+        "https://linkedin.com/in/bhavya-suryawanshi/",
+        "https://github.com/DragSama94/"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Lakshmi Narain College of Technology (LNCT)"
+      },
+      "knowsAbout": ["Java", "Spring Boot", "Python", "React.js", "Docker", "AWS", "Salesforce", "SQL"]
+    }
+    </script>
+</head>
+
+<body class="selection:bg-primary selection:text-white">
+
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="moving-orb orb-1"></div>
+    <div class="moving-orb orb-2"></div>
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <button class="theme-fab aria-label='Switch Color Theme'" id="theme-toggle" title="Switch Theme">
+        <i class="fas fa-palette"></i>
+    </button>
+
+    <div id="toast-notification" class="bg-surface border border-primary px-5 py-3 rounded-full shadow-2xl flex items-center gap-2.5 text-sm font-semibold text-text-main pointer-events-none backdrop-blur-xl">
+        <i class="fas fa-check-circle text-green-400 text-base"></i>
+        <span id="toast-message">Email address copied to clipboard!</span>
+    </div>
+
+    <header class="fixed top-4 sm:top-6 w-full z-50 transition-all duration-300 flex justify-center px-4 pointer-events-none" id="navbar-container">
+        <nav class="nav-pill flex items-center justify-between w-full max-w-5xl pointer-events-auto shadow-lg">
+            <div class="flex items-center gap-4">
+                <a href="#home" class="text-lg sm:text-xl font-extrabold tracking-tighter text-gradient hover:scale-105 transition-transform font-mono py-1">
+                   &lt;BS /&gt;
+                </a>
+                <button onclick="openCommandPalette()" class="hidden sm:flex items-center gap-2 bg-surface/80 border border-border/80 hover:border-primary px-3 py-1.5 rounded-full text-xs font-mono text-text-muted hover:text-text-main transition-all">
+                    <i class="fas fa-search text-primary text-[10px]"></i>
+                    <span>Quick Jump...</span>
+                    <kbd class="bg-surface px-1.5 py-0.5 rounded text-[10px] border border-border">Ctrl+K</kbd>
+                </button>
+            </div>
+            
+            <div class="hidden md:flex gap-6 lg:gap-8 items-center font-medium text-xs tracking-wider uppercase">
+                <a href="#home" class="text-text-muted hover:text-primary transition-all py-2">Home</a>
+                <a href="#skills" class="text-text-muted hover:text-primary transition-all py-2">Expertise</a>
+                <a href="#projects" class="text-text-muted hover:text-primary transition-all py-2">Work</a>
+                <a href="#experience" class="text-text-muted hover:text-primary transition-all py-2">Experience</a>
+                <a href="#resume" class="text-text-muted hover:text-primary transition-all py-2">Resume</a>
+                <a href="#contact" class="btn-primary px-5 py-2 rounded-full text-white font-semibold ml-1">Get in Touch</a>
+            </div>
+
+            <div class="flex items-center gap-3 md:hidden">
+                <button onclick="openCommandPalette()" class="text-text-main hover:text-primary p-2 text-base focus:outline-none aria-label='Search Command Palette'">
+                    <i class="fas fa-terminal text-primary"></i>
+                </button>
+                <button id="mobile-menu-open" class="text-text-main hover:text-primary p-2 -mr-2 text-xl focus:outline-none aria-label='Open Mobile Menu'">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-between p-6 pointer-events-auto">
+            <div class="flex justify-between items-center border-b border-border/40 pb-4">
+                <span class="text-lg font-bold font-mono text-gradient">&lt;Bhavya Suryawanshi /&gt;</span>
+                <button id="mobile-menu-close" class="text-text-main text-2xl hover:text-primary p-2 focus:outline-none aria-label='Close Mobile Menu'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col space-y-6 my-auto text-center font-display">
+                <a href="#home" class="text-2xl font-bold text-text-main hover:text-primary mobile-link transition-colors py-1">Home</a>
+                <a href="#skills" class="text-2xl font-bold text-text-main hover:text-primary mobile-link transition-colors py-1">Expertise</a>
+                <a href="#projects" class="text-2xl font-bold text-text-main hover:text-primary mobile-link transition-colors py-1">Featured Work</a>
+                <a href="#experience" class="text-2xl font-bold text-text-main hover:text-primary mobile-link transition-colors py-1">Experience</a>
+                <a href="#resume" class="text-2xl font-bold text-text-main hover:text-primary mobile-link transition-colors py-1">Resume</a>
+                <a href="#contact" class="text-2xl font-bold text-primary mobile-link transition-colors py-1">Get in Touch</a>
+            </div>
+
+            <div class="border-t border-border/40 pt-6 text-center">
+                <p class="text-xs text-text-muted mb-4">Let's connect professionally</p>
+                <div class="flex justify-center gap-6 text-2xl">
+                    <a href="mailto:bhavyasury123@gmail.com" class="text-text-muted hover:text-primary p-2"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/bhavya-suryawanshi/" target="_blank" class="text-text-muted hover:text-primary p-2"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/DragSama94/" target="_blank" class="text-text-muted hover:text-primary p-2"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="min-h-screen flex items-center pt-24 pb-16 relative overflow-hidden">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full">
+                <div class="lg:col-span-7 reveal z-10 text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full ambient-card border-primary/30 text-primary text-xs font-semibold mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span>Active & Available for Roles &bull; 2026</span>
+                    </div>
+                    
+                    <h1 class="fluid-h1 font-extrabold tracking-tight text-text-main mb-6 leading-[1.08] font-display">
+                        Bhavya <br> <span class="text-gradient">Suryawanshi</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg md:text-xl text-text-muted mb-8 max-w-xl leading-relaxed font-light">
+                        Full-Stack Java & AI Engineer architecting scalable, high-performance web systems. I specialize in enterprise <strong class="text-primary font-medium">Spring Boot 3</strong> backends, algorithmic <strong class="text-primary font-medium">Python API</strong> intelligence, and cloud deployment.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3.5 sm:items-center">
+                        <a href="#projects" class="btn-primary px-7 py-3.5 rounded-xl font-semibold text-white flex items-center justify-center gap-3 text-sm shadow-md">
+                            <span>Explore Featured Work</span> <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                        <button onclick="copyToClipboard('bhavyasury123@gmail.com')" class="px-6 py-3.5 rounded-xl border border-border text-text-main font-semibold text-sm hover:border-primary hover:text-primary transition-all bg-surface/50 hover:bg-surface flex items-center justify-center gap-2.5 min-h-[44px] cursor-pointer">
+                            <i class="fas fa-copy text-primary"></i> <span>Copy Email Address</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-12 pt-6 border-t border-border/30 flex flex-wrap items-center gap-y-2 gap-x-6 text-text-muted text-xs font-mono">
+                        <span class="uppercase tracking-widest text-[10px] text-text-muted/60 w-full sm:w-auto">Interactive Stack (Click to Filter Work):</span>
+                        <div class="flex flex-wrap gap-3 font-semibold text-text-main">
+                            <button onclick="filterBySkill('Spring Boot')" class="hover:text-primary transition-colors flex items-center gap-1.5 bg-surface/50 px-2.5 py-1 rounded border border-border/50 hover:border-primary">
+                                <i class="fab fa-java text-primary text-sm"></i> Spring Boot
+                            </button>
+                            <button onclick="filterBySkill('Python')" class="hover:text-primary transition-colors flex items-center gap-1.5 bg-surface/50 px-2.5 py-1 rounded border border-border/50 hover:border-primary">
+                                <i class="fab fa-python text-yellow-500 text-sm"></i> Python
+                            </button>
+                            <button onclick="filterBySkill('React')" class="hover:text-primary transition-colors flex items-center gap-1.5 bg-surface/50 px-2.5 py-1 rounded border border-border/50 hover:border-primary">
+                                <i class="fab fa-react text-blue-400 text-sm"></i> React
+                            </button>
+                            <button onclick="filterBySkill('Docker')" class="hover:text-primary transition-colors flex items-center gap-1.5 bg-surface/50 px-2.5 py-1 rounded border border-border/50 hover:border-primary">
+                                <i class="fab fa-docker text-blue-500 text-sm"></i> Docker
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative flex justify-center reveal delay-[200ms] z-10 mt-6 lg:mt-0">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 md:w-[360px] md:h-[360px] relative z-10">
+                        <img src="assets/portrait.jpg" 
+                             alt="Bhavya Suryawanshi Portrait" 
+                             onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop'"
+                             class="w-full h-full object-cover morph-img bg-surface">
+                    </div>
+                    
+                    <div class="absolute -bottom-3 left-0 sm:left-4 ambient-card px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl flex items-center gap-2.5 shadow-xl z-20">
+                        <i class="fab fa-java text-xl sm:text-2xl text-primary"></i>
+                        <div class="text-left font-mono">
+                            <div class="text-[9px] sm:text-[10px] text-text-muted">Backend Architecture</div>
+                            <div class="text-xs font-bold text-text-main">Spring Boot 3</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-4 -right-2 sm:-right-4 ambient-card px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl flex items-center gap-2.5 shadow-xl z-20">
+                        <i class="fab fa-python text-xl sm:text-2xl text-yellow-500"></i>
+                        <div class="text-left font-mono">
+                            <div class="text-[9px] sm:text-[10px] text-text-muted">Intelligence API</div>
+                            <div class="text-xs font-bold text-text-main">AI & Data Models</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 sm:py-28 relative">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-primary text-xs font-mono font-semibold uppercase tracking-[0.25em] mb-2">Technical Capabilities</h2>
+                    <h3 class="fluid-h2 font-extrabold text-text-main font-display">
+                        Engineered for Performance
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                    <div class="ambient-card p-6 sm:p-7 rounded-2xl reveal delay-[100ms] group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 text-primary">
+                                <i class="fas fa-server text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-text-main mb-2 font-display">Backend Architecture</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-6">Building secure, scalable RESTful APIs and microservice structures using enterprise Java standards.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border/40 font-mono text-[11px] text-text-main">
+                            <button onclick="filterBySkill('Java')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Java Adv</button>
+                            <button onclick="filterBySkill('Spring Boot')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Spring Boot 3</button>
+                            <button onclick="filterBySkill('Hibernate')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Hibernate</button>
+                            <button onclick="filterBySkill('REST')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">REST APIs</button>
+                        </div>
+                    </div>
+
+                    <div class="ambient-card p-6 sm:p-7 rounded-2xl reveal delay-[200ms] group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 text-primary">
+                                <i class="fas fa-brain text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-text-main mb-2 font-display">AI & Data APIs</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-6">Connecting LLM intelligence and algorithmic financial screening models directly into backend pipelines.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border/40 font-mono text-[11px] text-text-main">
+                            <button onclick="filterBySkill('Python')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Python</button>
+                            <button onclick="filterBySkill('OpenAI')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">OpenAI API</button>
+                            <button onclick="filterBySkill('Screening')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Data Screening</button>
+                            <button onclick="filterBySkill('JSON')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">JSON / XML</button>
+                        </div>
+                    </div>
+
+                    <div class="ambient-card p-6 sm:p-7 rounded-2xl reveal delay-[300ms] group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 text-primary">
+                                <i class="fab fa-react text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-text-main mb-2 font-display">Modern Frontend</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-6">Crafting highly responsive, accessible, and animated user interfaces using modern web frameworks.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border/40 font-mono text-[11px] text-text-main">
+                            <button onclick="filterBySkill('React')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">React.js</button>
+                            <button onclick="filterBySkill('Tailwind')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Tailwind CSS</button>
+                            <button onclick="filterBySkill('Three')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Three.js</button>
+                            <button onclick="filterBySkill('GSAP')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">GSAP</button>
+                        </div>
+                    </div>
+
+                    <div class="ambient-card p-6 sm:p-7 rounded-2xl reveal delay-[400ms] group flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-white transition-all duration-300 text-primary">
+                                <i class="fab fa-docker text-xl"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-text-main mb-2 font-display">Cloud & Salesforce</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-6">Containerizing deployments and customizing enterprise cloud CRM workflows for business automation.</p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border/40 font-mono text-[11px] text-text-main">
+                            <button onclick="filterBySkill('Docker')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Docker</button>
+                            <button onclick="filterBySkill('AWS')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">AWS Cloud</button>
+                            <button onclick="filterBySkill('Salesforce')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">Salesforce Apex</button>
+                            <button onclick="filterBySkill('LWC')" class="bg-surface hover:bg-primary/20 hover:text-primary px-2.5 py-1 rounded border border-border transition-colors">LWC</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 sm:py-28 bg-surface/20 relative">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 reveal gap-6">
+                    <div>
+                        <h2 class="text-primary text-xs font-mono font-semibold uppercase tracking-[0.25em] mb-2">Featured Work</h2>
+                        <h3 class="fluid-h2 font-extrabold text-text-main font-display">Recent Projects</h3>
+                    </div>
+
+                    <div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 font-mono text-xs no-scrollbar">
+                        <button onclick="filterProjects('all', this)" class="filter-btn active px-4 py-2 rounded-xl border border-border bg-surface font-semibold whitespace-nowrap transition-all cursor-pointer">All Projects</button>
+                        <button onclick="filterProjects('fullstack', this)" class="filter-btn px-4 py-2 rounded-xl border border-border bg-surface font-semibold whitespace-nowrap transition-all cursor-pointer">Full-Stack</button>
+                        <button onclick="filterProjects('ai', this)" class="filter-btn px-4 py-2 rounded-xl border border-border bg-surface font-semibold whitespace-nowrap transition-all cursor-pointer">AI & Cloud</button>
+                    </div>
+                </div>
+
+                <div class="project-item ai fullstack ambient-card rounded-3xl overflow-hidden mb-8 sm:mb-10 border-primary/40 shadow-2xl reveal group" data-skills="spring boot python docker java rest ai screening">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 md:p-12">
+                        <div class="lg:col-span-7 space-y-5 z-10">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/30 text-xs font-mono font-semibold">
+                                <i class="fas fa-star text-yellow-400"></i> FLAGSHIP AI & FINTECH PLATFORM
+                            </div>
+                            
+                            <h4 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-text-main font-display group-hover:text-primary transition-colors">
+                                StockScry: AI-Integrated Stock Screening
+                            </h4>
+                            
+                            <p class="text-text-muted text-sm sm:text-base leading-relaxed">
+                                A high-performance fintech application engineered to screen and analyze market volatility. Built with a decoupled microservice architecture: a secure <strong class="text-text-main font-medium">Spring Boot</strong> backend handling user analytics and persistence, paired with an isolated <strong class="text-text-main font-medium">Python API</strong> intelligence service for algorithmic stock evaluation.
+                            </p>
+                            
+                            <div class="grid grid-cols-3 gap-2 sm:gap-4 py-4 border-y border-border/40 text-left font-mono">
+                                <div>
+                                    <span class="block text-[9px] sm:text-[10px] text-text-muted uppercase tracking-wider">Backend Service</span>
+                                    <strong class="text-text-main font-semibold text-xs sm:text-sm">Spring Boot 3</strong>
+                                </div>
+                                <div>
+                                    <span class="block text-[9px] sm:text-[10px] text-text-muted uppercase tracking-wider">Analysis Engine</span>
+                                    <strong class="text-text-main font-semibold text-xs sm:text-sm">Python Fast API</strong>
+                                </div>
+                                <div>
+                                    <span class="block text-[9px] sm:text-[10px] text-text-muted uppercase tracking-wider">Deployment</span>
+                                    <strong class="text-text-main font-semibold text-xs sm:text-sm">Docker Containers</strong>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3.5 pt-2">
+                                <button onclick="openModal('stockscry')" class="btn-primary px-6 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2.5 text-white shadow-md cursor-pointer w-full sm:w-auto">
+                                    <i class="fas fa-project-diagram text-xs"></i> <span>Architecture & Workflow</span>
+                                </button>
+                                <a href="https://stockscry.ddns.net/" target="_blank" class="px-6 py-3 rounded-xl border border-border text-text-main font-semibold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2 bg-surface/50 w-full sm:w-auto min-h-[44px]">
+                                    <i class="fas fa-external-link-alt"></i> <span>Live View</span>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="lg:col-span-5 z-10">
+                            <div class="aspect-video bg-background/80 rounded-2xl border border-border overflow-hidden relative group-hover:border-primary/50 transition-all shadow-inner flex flex-col justify-center items-center p-6 text-center">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary text-2xl sm:text-3xl mb-4 shadow-lg">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <span class="font-mono text-xs font-semibold text-text-main mb-1">StockScry Analytics Pipeline</span>
+                                <span class="text-[11px] text-text-muted max-w-xs">Decoupled Spring Boot & Python Microservices</span>
+                                
+                                <div class="flex flex-wrap justify-center items-center gap-2 mt-6 text-[10px] sm:text-[11px] font-mono bg-surface px-3.5 py-2 rounded-lg border border-border">
+                                    <span class="text-blue-400">REST API</span>
+                                    <i class="fas fa-long-arrow-alt-right text-text-muted"></i>
+                                    <span class="text-yellow-400">Python AI</span>
+                                    <i class="fas fa-long-arrow-alt-right text-text-muted"></i>
+                                    <span class="text-green-400">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <article class="project-item fullstack ambient-card rounded-2xl overflow-hidden group reveal delay-[100ms] flex flex-col justify-between" data-skills="java spring boot rest hibernate security">
+                        <div class="z-10">
+                            <div class="h-44 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                                <i class="fas fa-briefcase text-5xl text-text-muted/30 group-hover:text-primary transition-all duration-500 group-hover:scale-110"></i>
+                                <span class="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono border border-border text-text-main">Full-Stack</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors font-display">Enterprise Job Portal</h4>
+                                <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                    A full-stack recruiting and applicant tracking platform featuring role-based Spring Security authentication, dynamic job posting workflows, and a responsive Thymeleaf UI.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 z-10">
+                            <div class="flex flex-wrap gap-1.5 mb-6 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">Java</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">Spring Boot 3</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">Spring Security</span>
+                            </div>
+                            <a href="https://github.com/DragSama94/Spring-Boot-3-Job-Portal-Web-Application" target="_blank" class="w-full py-2.5 rounded-xl border border-border hover:border-primary text-text-main hover:text-primary font-semibold text-xs flex justify-center items-center gap-2 transition-all bg-surface/50 min-h-[44px]">
+                                <span>View Repository</span> <i class="fas fa-external-link-alt text-[10px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-item ai ambient-card rounded-2xl overflow-hidden group reveal delay-[200ms] flex flex-col justify-between" data-skills="react python openai tailwind ai rest">
+                        <div class="z-10">
+                            <div class="h-44 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                                <i class="fas fa-robot text-5xl text-text-muted/30 group-hover:text-primary transition-all duration-500 group-hover:scale-110"></i>
+                                <span class="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono border border-border text-text-main">AI & Cloud</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors font-display">E-Commerce AI Assistant</h4>
+                                <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                    An intelligent shopping assistant integrating OpenAI APIs to deliver real-time product recommendations, automated support resolution, and dynamic customer engagement.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 z-10">
+                            <div class="flex flex-wrap gap-1.5 mb-6 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">React.js</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">OpenAI API</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">Tailwind CSS</span>
+                            </div>
+                            <a href="https://github.com/DragSama94/E-Commerce-Website-with-AI-chatbot-integration" target="_blank" class="w-full py-2.5 rounded-xl border border-border hover:border-primary text-text-main hover:text-primary font-semibold text-xs flex justify-center items-center gap-2 transition-all bg-surface/50 min-h-[44px]">
+                                <span>View Repository</span> <i class="fas fa-external-link-alt text-[10px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="project-item fullstack ambient-card rounded-2xl overflow-hidden group reveal delay-[300ms] flex flex-col justify-between" data-skills="java mysql jdbc rest sql">
+                        <div class="z-10">
+                            <div class="h-44 bg-surface-hover relative overflow-hidden flex items-center justify-center border-b border-border">
+                                <i class="fas fa-book-reader text-5xl text-text-muted/30 group-hover:text-primary transition-all duration-500 group-hover:scale-110"></i>
+                                <span class="absolute top-4 right-4 bg-background/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-mono border border-border text-text-main">Full-Stack</span>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-text-main mb-2 group-hover:text-primary transition-colors font-display">Library Management System</h4>
+                                <p class="text-text-muted text-sm mb-6 leading-relaxed">
+                                    An end-to-end relational database application managing book inventories, student circulation records, and fine calculations using Java and JDBC.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 z-10">
+                            <div class="flex flex-wrap gap-1.5 mb-6 font-mono text-[11px]">
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">Java</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">MySQL</span>
+                                <span class="px-2.5 py-1 rounded bg-primary/10 text-primary border border-primary/20">JDBC Architecture</span>
+                            </div>
+                            <button onclick="openModal('library')" class="w-full py-2.5 rounded-xl border border-border hover:border-primary text-text-main hover:text-primary font-semibold text-xs flex justify-center items-center gap-2 transition-all bg-surface/50 min-h-[44px] cursor-pointer">
+                                <i class="fas fa-project-diagram text-[10px]"></i> <span>Architecture & Workflow</span>
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 sm:py-28 relative">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-primary text-xs font-mono font-semibold uppercase tracking-[0.25em] mb-2">Background</h2>
+                    <h3 class="fluid-h2 font-extrabold text-text-main font-display">Professional Track</h3>
+
+                    <div class="inline-flex gap-6 mt-8 border-b border-border/40 font-mono text-xs">
+                        <button onclick="switchTab('work', this)" class="tab-btn active pb-3 px-2 text-text-main hover:text-primary transition-colors">Work Experience</button>
+                        <button onclick="switchTab('academic', this)" class="tab-btn pb-3 px-2 text-text-muted hover:text-primary transition-colors">Academic Profile</button>
+                    </div>
+                </div>
+
+                <div id="tab-work" class="relative border-l border-primary/30 ml-3 sm:ml-6 md:ml-12 space-y-10 transition-opacity duration-300">
+                    <div class="relative pl-6 sm:pl-8 md:pl-12 reveal delay-[100ms]">
+                        <div class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-background shadow-[0_0_10px_var(--accent)]"></div>
+                        <div class="ambient-card p-6 sm:p-8 rounded-2xl hover:border-primary transition-all">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1 z-10 relative">
+                                <span class="text-primary text-xs font-mono font-bold uppercase tracking-widest block">Industrial Research Internship</span>
+                                <span class="text-text-muted font-mono text-xs bg-surface px-3 py-1 rounded border border-border w-fit">8 Weeks Program</span>
+                            </div>
+                            <h4 class="text-lg sm:text-xl md:text-2xl font-bold text-text-main mb-3 font-display z-10 relative">AeroMetallix &bull; Advanced Steel Solutions</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-4 z-10 relative">
+                                Contributed to specialized project analysis and technical workflows within industrial metallurgy applications, bridging engineering data with practical software reporting solutions.
+                            </p>
+                            <ul class="space-y-2 text-sm text-text-main z-10 relative">
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fas fa-check text-primary text-xs mt-1 shrink-0"></i>
+                                    <span>Analyzed complex technical datasets and streamlined operational reporting models.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fas fa-check text-primary text-xs mt-1 shrink-0"></i>
+                                    <span>Collaborated with cross-functional engineering teams to optimize industrial documentation workflows.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-6 sm:pl-8 md:pl-12 reveal delay-[200ms]">
+                        <div class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-background shadow-[0_0_10px_var(--accent)]"></div>
+                        <div class="ambient-card p-6 sm:p-8 rounded-2xl hover:border-primary transition-all">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1 z-10 relative">
+                                <span class="text-primary text-xs font-mono font-bold uppercase tracking-widest block">Cloud CRM Development Internship</span>
+                                <span class="text-text-muted font-mono text-xs bg-surface px-3 py-1 rounded border border-border w-fit">8 Weeks Program</span>
+                            </div>
+                            <h4 class="text-lg sm:text-xl md:text-2xl font-bold text-text-main mb-3 font-display z-10 relative">Salesforce Developer Intern</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-4 z-10 relative">
+                                Completed an intensive cloud engineering program focused on customizing enterprise CRM architectures, building backend automation logic, and developing responsive UI components.
+                            </p>
+                            <ul class="space-y-2 text-sm text-text-main z-10 relative">
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fas fa-check text-primary text-xs mt-1 shrink-0"></i>
+                                    <span>Engineered backend business automation logic and triggers utilizing <strong class="font-semibold text-text-main">Salesforce Apex</strong>.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fas fa-check text-primary text-xs mt-1 shrink-0"></i>
+                                    <span>Designed modern, reusable component interfaces with <strong class="font-semibold text-text-main">Lightning Web Components (LWC)</strong>.</span>
+                                </li>
+                                <li class="flex items-start gap-2.5">
+                                    <i class="fas fa-check text-primary text-xs mt-1 shrink-0"></i>
+                                    <span>Earned official industry credentials: <strong class="font-semibold text-text-main">Agentforce</strong> and <strong class="font-semibold text-text-main">Agentblazer Specialist</strong> certifications.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-academic" class="hidden relative border-l border-primary/30 ml-3 sm:ml-6 md:ml-12 space-y-10 transition-opacity duration-300">
+                    <div class="relative pl-6 sm:pl-8 md:pl-12">
+                        <div class="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-background shadow-[0_0_10px_var(--accent)]"></div>
+                        <div class="ambient-card p-6 sm:p-8 rounded-2xl hover:border-primary transition-all">
+                            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-1 z-10 relative">
+                                <span class="text-primary text-xs font-mono font-bold uppercase tracking-widest block">Bachelor of Technology (B.Tech)</span>
+                                <span class="text-text-muted font-mono text-xs bg-surface px-3 py-1 rounded border border-border w-fit">2022 &bull; Present</span>
+                            </div>
+                            <h4 class="text-lg sm:text-xl md:text-2xl font-bold text-text-main mb-3 font-display z-10 relative">Computer Science & Engineering</h4>
+                            <p class="text-text-muted text-sm leading-relaxed mb-4 z-10 relative">
+                                Lakshmi Narain College of Technology (LNCT). Rigorous coursework in Data Structures, Relational Database Management Systems, Object-Oriented Programming, and Cloud Computing Architecture.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="py-24 sm:py-28 bg-surface/20 relative">
+            <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center reveal">
+                <h2 class="text-primary text-xs font-mono font-semibold uppercase tracking-[0.25em] mb-2">Qualifications</h2>
+                <h3 class="fluid-h2 font-extrabold text-text-main mb-12 font-display">Resume & Credentials</h3>
+                
+                <div class="ambient-card rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden text-left group hover:border-primary/50 transition-all shadow-xl">
+                    <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-primary via-purple-500 to-blue-500"></div>
+                    
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-border/40 pb-8 mb-8 gap-4 z-10 relative">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-text-main font-display">Bhavya Suryawanshi</h3>
+                            <p class="text-primary font-mono text-xs sm:text-sm mt-1">Full-Stack Java & AI Engineer</p>
+                        </div>
+                        <a href="Resume_BhavyaSuryawanshi.pdf" download class="btn-primary px-6 py-3.5 rounded-xl flex items-center justify-center gap-2.5 text-white font-semibold text-sm transition-transform hover:scale-105 shadow-md w-full sm:w-auto">
+                            <i class="fas fa-file-download"></i> <span>Download Resume PDF</span>
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 z-10 relative">
+                        <div>
+                            <h4 class="text-xs font-mono font-bold text-text-main mb-4 flex items-center gap-2 border-b border-border/40 pb-2 uppercase tracking-wider">
+                                <i class="fas fa-graduation-cap text-primary text-sm"></i> Education
+                            </h4>
+                            <div class="space-y-1">
+                                <p class="text-text-main font-bold text-base">B.Tech in Computer Science</p>
+                                <p class="text-text-muted text-sm">Lakshmi Narain College of Technology (LNCT)</p>
+                                <p class="text-primary font-mono text-xs font-semibold mt-1">2022 &bull; Present</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="text-xs font-mono font-bold text-text-main mb-4 flex items-center gap-2 border-b border-border/40 pb-2 uppercase tracking-wider">
+                                <i class="fas fa-award text-primary text-sm"></i> Key Certifications
+                            </h4>
+                            <ul class="space-y-2.5 text-text-muted text-sm">
+                                <li class="flex items-center gap-2.5 text-text-main font-medium">
+                                    <i class="fas fa-check-circle text-primary text-xs shrink-0"></i> AWS Academy Cloud Foundations
+                                </li>
+                                <li class="flex items-center gap-2.5 text-text-main font-medium">
+                                    <i class="fas fa-check-circle text-primary text-xs shrink-0"></i> Salesforce Certified Agentforce Specialist
+                                </li>
+                                <li class="flex items-center gap-2.5 text-text-main font-medium">
+                                    <i class="fas fa-check-circle text-primary text-xs shrink-0"></i> Salesforce Certified Agentblazer
+                                </li>
+                                <li class="flex items-center gap-2.5 text-text-main font-medium">
+                                    <i class="fas fa-check-circle text-primary text-xs shrink-0"></i> Advanced Spring Boot 3 & Microservices
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 sm:py-28 relative">
+            <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-primary text-xs font-mono font-semibold uppercase tracking-[0.25em] mb-2">Contact</h2>
+                    <h3 class="fluid-h2 font-extrabold text-text-main font-display">Let's Build Together</h3>
+                    <p class="text-text-muted text-sm sm:text-base mt-3 max-w-md mx-auto leading-relaxed">
+                        I am actively seeking full-time engineering roles and collaborative projects. Feel free to reach out to discuss how my skill set aligns with your team.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 reveal delay-[100ms]">
+                    <button onclick="copyToClipboard('bhavyasury123@gmail.com')" class="px-6 py-4 rounded-xl ambient-card hover:border-primary transition-all flex items-center justify-center gap-3 text-text-main hover:scale-[1.02] group text-sm font-semibold cursor-pointer min-h-[48px]">
+                        <i class="fas fa-envelope text-primary text-base group-hover:scale-110 transition-transform"></i>
+                        <span>bhavyasury123@gmail.com</span>
+                        <span class="text-[10px] font-mono bg-primary/20 text-primary px-2 py-0.5 rounded ml-1">Copy</span>
+                    </button>
+                    <a href="https://www.linkedin.com/in/bhavya-suryawanshi/" target="_blank" class="px-6 py-4 rounded-xl ambient-card hover:border-primary transition-all flex items-center justify-center gap-3 text-text-main hover:scale-[1.02] group text-sm font-semibold min-h-[48px]">
+                        <i class="fab fa-linkedin text-primary text-base group-hover:scale-110 transition-transform"></i>
+                        <span>LinkedIn Profile</span>
+                        <i class="fas fa-external-link-alt text-[10px] text-text-muted ml-1"></i>
+                    </a>
+                </div>
+
+                <form action="https://formspree.io/f/xkjwwzra" method="POST" class="ambient-card p-6 sm:p-8 md:p-10 rounded-3xl space-y-5 reveal delay-[200ms] shadow-xl">
+                    <div class="grid sm:grid-cols-2 gap-5 z-10 relative">
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-text-main mb-2 ml-1">Your Name</label>
+                            <input type="text" name="name" required class="w-full bg-surface border border-border rounded-xl px-4 py-3.5 text-current text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-text-muted placeholder:opacity-80 min-h-[44px]" placeholder="Full Name">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono uppercase tracking-wider text-text-main mb-2 ml-1">Email Address</label>
+                            <input type="email" name="email" required class="w-full bg-surface border border-border rounded-xl px-4 py-3.5 text-current text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-text-muted placeholder:opacity-80 min-h-[44px]" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="z-10 relative"> 
+                        <label class="block text-xs font-mono uppercase tracking-wider text-text-main mb-2 ml-1">Message</label>
+                        <textarea name="message" rows="4" required class="w-full bg-surface border border-border rounded-xl px-4 py-3.5 text-current text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-all placeholder:text-text-muted placeholder:opacity-80" placeholder="Hi Bhavya, I would love to discuss an open role on our team..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full btn-primary py-4 rounded-xl font-semibold text-sm hover:scale-[1.01] transition-transform shadow-md flex justify-center items-center gap-2 cursor-pointer z-10 relative">
+                        <span>Send Message</span> <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+
+                <div class="flex justify-center gap-8 mt-12 text-2xl reveal delay-[300ms]">
+                    <a href="mailto:bhavyasury123@gmail.com" class="text-text-muted hover:text-primary transition-all hover:scale-110 p-2"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/bhavya-suryawanshi/" target="_blank" class="text-text-muted hover:text-primary transition-all hover:scale-110 p-2"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/DragSama94/" target="_blank" class="text-text-muted hover:text-primary transition-all hover:scale-110 p-2"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-10 border-t border-border/30 bg-background/50 backdrop-blur-md">
+            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center reveal">
+                <p class="text-text-muted font-mono text-[10px] uppercase tracking-[0.2em] mb-5">Built With Modern Standards</p>
+                <div class="flex flex-wrap justify-center items-center gap-6 text-xl text-text-muted">
+                    <i class="fab fa-java hover:text-primary transition-colors hover:scale-110" title="Java 17+"></i>
+                    <i class="fab fa-python hover:text-[#3776AB] transition-colors hover:scale-110" title="Python"></i>
+                    <i class="fab fa-react hover:text-[#61DAFB] transition-colors hover:scale-110" title="React.js"></i>
+                    <i class="fab fa-docker hover:text-[#2496ED] transition-colors hover:scale-110" title="Docker"></i>
+                    <i class="fab fa-aws hover:text-[#FF9900] transition-colors hover:scale-110" title="AWS"></i>
+                    <div class="h-4 w-[1px] bg-border hidden sm:block"></div>
+                    <span class="font-mono text-xs font-semibold hover:text-primary transition-colors">Tailwind CSS &bull; GSAP &bull; Three.js</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-surface py-6 text-center border-t border-border/20 px-4">
+        <p class="text-text-muted font-mono text-xs">&copy; 2026 Bhavya Suryawanshi. Engineered for high-performance and scalability.</p>
+    </footer>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay bg-background/80 backdrop-blur-md">
+        <div class="ambient-card max-w-2xl w-full rounded-3xl p-6 sm:p-8 border-primary/50 shadow-2xl relative max-h-[88vh] overflow-y-auto text-left">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-text-muted hover:text-primary text-xl p-2 focus:outline-none aria-label='Close Modal' z-20">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-content" class="z-10 relative">
+                </div>
+        </div>
+    </div>
+
+    <div id="command-palette" class="fixed inset-0 z-[110] flex items-start justify-center pt-[15vh] p-4 modal-overlay bg-background/80 backdrop-blur-md">
+        <div class="ambient-card max-w-lg w-full rounded-2xl border-primary/50 shadow-2xl overflow-hidden text-left bg-surface">
+            <div class="flex items-center gap-3 px-4 py-3.5 border-b border-border/40 bg-background/50">
+                <i class="fas fa-search text-primary text-sm"></i>
+                <input type="text" id="cmd-input" placeholder="Type a command or jump to section..." class="w-full bg-transparent text-text-main text-sm focus:outline-none font-mono placeholder:text-text-muted placeholder:opacity-80">
+                <kbd class="bg-surface px-1.5 py-0.5 rounded text-[10px] font-mono text-text-muted border border-border">ESC</kbd>
+            </div>
+            <div id="cmd-list" class="p-2 max-h-[60vh] overflow-y-auto font-mono text-xs space-y-1">
+                <div class="text-[10px] text-text-muted uppercase tracking-wider px-3 py-1.5 font-sans">Navigation</div>
+                <a href="#home" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-home text-primary w-4"></i> Home</span><span class="text-text-muted">&larr;</span></a>
+                <a href="#skills" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-layer-group text-primary w-4"></i> Technical Capabilities</span><span class="text-text-muted">&larr;</span></a>
+                <a href="#projects" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-briefcase text-primary w-4"></i> Featured Work</span><span class="text-text-muted">&larr;</span></a>
+                <a href="#experience" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-road text-primary w-4"></i> Work Experience</span><span class="text-text-muted">&larr;</span></a>
+                <a href="#resume" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-file-alt text-primary w-4"></i> Resume & Credentials</span><span class="text-text-muted">&larr;</span></a>
+                <a href="#contact" onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-envelope text-primary w-4"></i> Contact Me</span><span class="text-text-muted">&larr;</span></a>
+                
+                <div class="text-[10px] text-text-muted uppercase tracking-wider px-3 py-1.5 font-sans pt-3">Actions</div>
+                <button onclick="copyToClipboard('bhavyasury123@gmail.com'); closeCommandPalette();" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-copy text-green-400 w-4"></i> Copy Email Address</span><span class="text-text-muted">Action</span></button>
+                <a href="Resume_BhavyaSuryawanshi.pdf" download onclick="closeCommandPalette()" class="cmd-item flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-download text-yellow-400 w-4"></i> Download Resume PDF</span><span class="text-text-muted">PDF</span></a>
+                <button onclick="document.getElementById('theme-toggle').click(); closeCommandPalette();" class="cmd-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-text-main"><span class="flex items-center gap-2.5"><i class="fas fa-palette text-purple-400 w-4"></i> Cycle Color Theme</span><span class="text-text-muted">Theme</span></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. FORCE SCROLL TO TOP ON LOAD ---
+        window.onbeforeunload = function () { window.scrollTo(0, 0); };
+
+        // --- 2. THEME SWITCHER (7 THEMES) ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        let themeState = 0;
+        const themes = ['', 'theme-pink', 'theme-orange', 'theme-green', 'theme-purple', 'theme-red', 'theme-cyan'];
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                if(themes[themeState]) body.classList.remove(themes[themeState]);
+                themeState = (themeState + 1) % themes.length;
+                if(themes[themeState]) body.classList.add(themes[themeState]);
+            });
+        }
+
+        // --- 3. SCROLL PROGRESS & NAVBAR SHRINK ---
+        let isScrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                    let scrolled = (height > 0) ? (winScroll / height) * 100 : 0;
+                    
+                    const progressEl = document.getElementById("scroll-progress");
+                    if (progressEl) progressEl.style.width = scrolled + "%";
+
+                    const navbar = document.querySelector('.nav-pill');
+                    if (navbar) {
+                        if (winScroll > 40) navbar.classList.add('scrolled');
+                        else navbar.classList.remove('scrolled');
+                    }
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }, { passive: true });
+
+        // --- 4. MOBILE MENU ---
+        const menuOpen = document.getElementById('mobile-menu-open');
+        const menuClose = document.getElementById('mobile-menu-close');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+        
+        const toggleMenu = () => {
+            if (!menu) return;
+            const isClosed = menu.classList.contains('translate-x-full');
+            menu.classList.toggle('translate-x-full');
+            document.body.style.overflow = isClosed ? 'hidden' : 'auto';
+        };
+        
+        if (menuOpen) menuOpen.addEventListener('click', toggleMenu);
+        if (menuClose) menuClose.addEventListener('click', toggleMenu);
+        links.forEach(l => l.addEventListener('click', () => {
+            if (menu) menu.classList.add('translate-x-full');
+            document.body.style.overflow = 'auto';
+        }));
+
+        // --- 5. ANIMATIONS ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- 6. COPY TO CLIPBOARD WITH TOAST ---
+        function copyToClipboard(text) {
+            if (!navigator.clipboard) return;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast-notification');
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 3000);
+                }
+            });
+        }
+
+        // --- 7. HARDWARE ACCELERATED AMBIENT GLOW ---
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            const cards = document.querySelectorAll('.ambient-card');
+            cards.forEach(card => {
+                let rafId = null;
+                card.addEventListener('mousemove', e => {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(() => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        card.style.setProperty('--mouse-x', `${x}px`);
+                        card.style.setProperty('--mouse-y', `${y}px`);
+                    });
+                });
+            });
+        }
+
+        // --- 8. PROJECT FILTERING & INTERACTIVE SKILL ROUTING ---
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            const items = document.querySelectorAll('.project-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'flex';
+                    setTimeout(() => item.style.opacity = '1', 30);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        function filterBySkill(skillName) {
+            const projectsSec = document.getElementById('projects');
+            if (projectsSec) projectsSec.scrollIntoView({ behavior: 'smooth' });
+            
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            
+            const items = document.querySelectorAll('.project-item');
+            const term = skillName.toLowerCase();
+            items.forEach(item => {
+                const skills = (item.getAttribute('data-skills') || '').toLowerCase();
+                if (skills.includes(term)) {
+                    item.style.display = 'flex';
+                    setTimeout(() => item.style.opacity = '1', 30);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // --- 9. INTERACTIVE TIMELINE TAB SWITCHER ---
+        function switchTab(tabName, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'text-text-main');
+                b.classList.add('text-text-muted');
+            });
+            if (btn) {
+                btn.classList.add('active', 'text-text-main');
+                btn.classList.remove('text-text-muted');
+            }
+
+            const workTab = document.getElementById('tab-work');
+            const acadTab = document.getElementById('tab-academic');
+            
+            if (tabName === 'work') {
+                if (acadTab) { acadTab.style.opacity = '0'; setTimeout(() => { acadTab.classList.add('hidden'); if (workTab) { workTab.classList.remove('hidden'); setTimeout(() => workTab.style.opacity = '1', 30); } }, 200); }
+            } else {
+                if (workTab) { workTab.style.opacity = '0'; setTimeout(() => { workTab.classList.add('hidden'); if (acadTab) { acadTab.classList.remove('hidden'); setTimeout(() => acadTab.style.opacity = '1', 30); } }, 200); }
+            }
+        }
+
+        // --- 10. ARCHITECTURE MODAL INTERACTION ---
+        const modalData = {
+            stockscry: `
+                <span class="text-primary text-xs font-mono font-semibold uppercase tracking-widest block mb-1">Technical Architecture</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-text-main font-display mb-4">StockScry AI Screening Engine</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 my-6 text-center font-mono text-xs">
+                    <div class="p-3 rounded-xl bg-surface border border-border">
+                        <span class="text-blue-400 font-bold block mb-1">1. Frontend UI</span>
+                        <span class="text-[11px] text-text-muted">React & Tailwind Dashboard</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-surface border border-border">
+                        <span class="text-primary font-bold block mb-1">2. Core API</span>
+                        <span class="text-[11px] text-text-muted">Spring Boot 3 REST Services</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-surface border border-border">
+                        <span class="text-yellow-400 font-bold block mb-1">3. AI Service</span>
+                        <span class="text-[11px] text-text-muted">Python Financial Screening</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3.5 text-text-muted text-xs sm:text-sm leading-relaxed mb-6">
+                    <p><strong class="text-text-main font-semibold">The Engineering Challenge:</strong> Real-time financial analysis requires screening massive volumes of market indicator data without creating bottlenecks or slowing down the primary user interface.</p>
+                    <p><strong class="text-text-main font-semibold">The Architecture:</strong> To ensure high performance, I designed a decoupled microservice system. The <span class="text-primary font-mono font-medium">Java / Spring Boot</span> backend handles secure authentication, session management, and database persistence. When complex mathematical screening or AI sentiment evaluation is requested, Spring Boot communicates seamlessly with an isolated <span class="text-primary font-mono font-medium">Python Fast API</span> service.</p>
+                    <p><strong class="text-text-main font-semibold">DevOps & Deployment:</strong> The entire ecosystem is containerized via <span class="text-primary font-mono font-medium">Docker</span>, guaranteeing consistent environment configuration and zero-dependency friction across staging and production servers.</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-surface border border-border font-mono text-xs text-text-main mb-6 space-y-1.5">
+                    <div class="text-text-muted font-semibold mb-1">Key Technologies & Protocols:</div>
+                    <div>&bull; Backend: Spring Boot 3, Hibernate JPA, RESTful Architecture</div>
+                    <div>&bull; AI Engine: Python Fast API, Algorithmic Financial Screening</div>
+                    <div>&bull; Infrastructure: Docker Compose, Isolated Microservice Containers</div>
+                </div>
+                <button onclick="closeModal()" class="w-full btn-primary py-3.5 rounded-xl font-semibold text-sm text-white shadow-md cursor-pointer">Close Specification</button>
+            `,
+            library: `
+                <span class="text-primary text-xs font-mono font-semibold uppercase tracking-widest block mb-1">Technical Architecture</span>
+                <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-text-main font-display mb-4">Library Management System</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-6 text-center font-mono text-xs">
+                    <div class="p-3 rounded-xl bg-surface border border-border">
+                        <span class="text-blue-400 font-bold block mb-1">1. Application Layer</span>
+                        <span class="text-[11px] text-text-muted">Java Core Logic</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-surface border border-border">
+                        <span class="text-primary font-bold block mb-1">2. Data Layer</span>
+                        <span class="text-[11px] text-text-muted">MySQL via JDBC</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3.5 text-text-muted text-xs sm:text-sm leading-relaxed mb-6">
+                    <p><strong class="text-text-main font-semibold">The Engineering Challenge:</strong> Managing high volumes of transactional book lending data while ensuring absolute data integrity.</p>
+                    <p><strong class="text-text-main font-semibold">The Architecture:</strong> A robust, end-to-end relational database application. The core logic executes in <span class="text-primary font-mono font-medium">Java</span>, communicating seamlessly with a <span class="text-primary font-mono font-medium">MySQL</span> database using <span class="text-primary font-mono font-medium">JDBC</span> for fast, ACID-compliant transactions and fine calculation handling.</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-surface border border-border font-mono text-xs text-text-main mb-6 space-y-1.5">
+                    <div class="text-text-muted font-semibold mb-1">Key Technologies:</div>
+                    <div>&bull; Language: Java SE</div>
+                    <div>&bull; Database: MySQL Relational Mapping</div>
+                    <div>&bull; Protocol: Java Database Connectivity (JDBC)</div>
+                </div>
+                <button onclick="closeModal()" class="w-full btn-primary py-3.5 rounded-xl font-semibold text-sm text-white shadow-md cursor-pointer">Close Specification</button>
+            `
+        };
+
+        const modal = document.getElementById('project-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal(projectKey) {
+            if (!modal || !modalContent) return;
+            modalContent.innerHTML = modalData[projectKey] || '';
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+
+        // --- 11. COMMAND PALETTE LOGIC (Ctrl+K) ---
+        const cmdPalette = document.getElementById('command-palette');
+        const cmdInput = document.getElementById('cmd-input');
+
+        function openCommandPalette() {
+            if (!cmdPalette || !cmdInput) return;
+            cmdPalette.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => cmdInput.focus(), 50);
+        }
+
+        function closeCommandPalette() {
+            if (!cmdPalette) return;
+            cmdPalette.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if (cmdInput) cmdInput.value = '';
+            filterCommandItems('');
+        }
+
+        if (cmdPalette) {
+            cmdPalette.addEventListener('click', (e) => {
+                if (e.target === cmdPalette) closeCommandPalette();
+            });
+        }
+
+        if (cmdInput) {
+            cmdInput.addEventListener('input', (e) => filterCommandItems(e.target.value));
+        }
+
+        function filterCommandItems(query) {
+            const term = query.toLowerCase();
+            document.querySelectorAll('.cmd-item').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(term) ? 'flex' : 'none';
+            });
+        }
+
+        // Global Keyboard Shortcuts (ESC & Ctrl+K)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (modal && modal.classList.contains('active')) closeModal();
+                if (cmdPalette && cmdPalette.classList.contains('active')) closeCommandPalette();
+            }
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                if (cmdPalette && cmdPalette.classList.contains('active')) closeCommandPalette();
+                else openCommandPalette();
+            }
+        });
+    </script>
+</body>
+</html>
